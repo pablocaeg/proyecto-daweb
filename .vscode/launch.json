@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "1 - Express Launch Program",
+      "program": "${workspaceFolder}/express/bin/www",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node"
+    },
+    {
+      "name": "2 - Chrome-CORS",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3030",
+      "webRoot": "${workspaceFolder}",
+      "runtimeArgs": ["--disable-web-security"]
+    }
+  ]
+}
