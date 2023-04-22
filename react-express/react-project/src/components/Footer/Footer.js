@@ -1,0 +1,28 @@
+import React from "react";
+
+const Footer = () => {
+  return (
+    <footer>
+      <div className="footer-info">
+        <h3>MiFoodie</h3>
+        <p>Plaza Cardenal Belluga, Murcia</p>
+        <p>Teléfono: 555-555-5555</p>
+        <p>Email: info@mifoodie.com</p>
+      </div>
+      <div className="footer-social">
+        <h3>Síguenos</h3>
+        <ul>
+          <li>Facebook</li>
+          <li>Twitter</li>
+          <li>Instagram</li>
+        </ul>
+      </div>
+      <div className="footer-legal">
+        <p>© 2023 MiFoodie. Todos los derechos reservados.</p>
+        <p>Términos y condiciones | Política de privacidad</p>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
