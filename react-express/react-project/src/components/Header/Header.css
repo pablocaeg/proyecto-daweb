@@ -20,6 +20,7 @@ header {
     font-size: 1.6rem;
     font-weight: bold;
     color: #fd6c01;
+    text-decoration: none;
   }
   nav.navbar {
     width: 100%;
