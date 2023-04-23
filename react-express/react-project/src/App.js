@@ -1,10 +1,10 @@
 import { Route, Routes} from "react-router-dom"
 
 import React from "react";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
-import Contact from "./pages/Contact/Contact";
-import Landing from "./pages/Landing/Landing";
+import Header from "./components/Header/Header.js";
+import Footer from "./components/Footer/Footer.js";
+import Contact from "./pages/Contact/Contact.js";
+import Landing from "./pages/Landing/Landing.js";
 
 const App = () => {
   return (
