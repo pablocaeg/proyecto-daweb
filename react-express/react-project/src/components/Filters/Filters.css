@@ -1,0 +1,54 @@
+.filters-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.city-rating-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.filter-city,
+.filter-coordinates,
+.filter-kilometers,
+.filter-rating {
+  padding: 10px;
+  border: 1px solid #ff7f50;
+  border-radius: 3px;
+  outline: none;
+  font-size: 14px;
+}
+
+.filter-rating {
+  width: 100px;
+}
+
+.filter-city:focus,
+.filter-coordinates:focus,
+.filter-kilometers:focus,
+.filter-rating:focus {
+  border-color: #ff9a72;
+}
+
+.coordinates-kilometers-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  border-radius: 3px;
+  padding: 10px;
+}
+
+.coordinates-container {
+  display: flex;
+  gap: 5px;
+}
+
+.kilometers-container {
+  display: flex;
+  align-items: center;
+}

@@ -8,12 +8,12 @@ const Header = () => {
         <Link id="app-title" to="/">MiFoodie</Link>
         <nav class="navbar">        
           {/*Icons*/}
-          <ul class="navbar-nav navbar-nav ms-auto ">
-            <li class="">
+          <ul class="navbar-nav">
+            <li class="navbar-button">
               <Link class="nav-link" to="/contact">Contact</Link>
             </li>
           </ul>
-    </nav>
+      </nav>
     </header>
   );
 };

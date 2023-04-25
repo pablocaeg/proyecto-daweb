@@ -5,6 +5,8 @@ import { BrowserRouter } from "react-router-dom"
 import './index.css';
 import './components/Footer/Footer.css'
 import './components/Header/Header.css'
+import './components/Filters/Filters.css'
+import './components/SearchBar/SearchBar.css'
 import './pages/Contact/Contact.css'
 import App from './App';
 

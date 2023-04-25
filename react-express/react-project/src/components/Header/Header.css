@@ -23,14 +23,14 @@ header {
     text-decoration: none;
   }
   nav.navbar {
-    width: 100%;
+    width: 90%;
     margin-left: 10px;
     margin-right: 40px;
   }
   
-  
-  nav.navbar .navbar-nav {
-    width: 100%;
+  nav.navbar {
+    margin-right: 30px;
+    width: 90%;
     display: flex;
     justify-content: flex-end;
   }
@@ -50,8 +50,12 @@ header {
     border-radius: 10%;
     padding: 15px;
   }
+
   li{
     list-style: none;
+  }
+
+  .navbar-button {
     margin: 0 10px;
   }
   
