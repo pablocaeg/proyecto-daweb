@@ -8,6 +8,7 @@ import './components/Header/Header.css'
 import './components/Filters/Filters.css'
 import './components/SearchBar/SearchBar.css'
 import './pages/Contact/Contact.css'
+import './pages/Restaurante/Restaurante.css'
 import App from './App';
 
 import reportWebVitals from './reportWebVitals';
