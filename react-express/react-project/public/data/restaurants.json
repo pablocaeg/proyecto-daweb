@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "The Tasty Burger",
+    "coordinates": "40.7128, -74.0060",
+    "postalCode": "10007",
+    "rating": 4.5
+  },
+  {
+    "id": 2,
+    "name": "Delicious Sushi",
+    "coordinates": "40.7308, -73.9973",
+    "postalCode": "10012",
+    "rating": 4.8
+  },
+  {
+    "id": 3,
+    "name": "Italian Delight",
+    "coordinates": "40.7223, -73.9887",
+    "postalCode": "10002",
+    "rating": 4.2
+  },
+  {
+    "id": 4,
+    "name": "Spicy Tacos",
+    "coordinates": "40.7315, -74.0105",
+    "postalCode": "10014",
+    "rating": 4.6
+  },
+  {
+    "id": 5,
+    "name": "Vegetarian Feast",
+    "coordinates": "40.7357, -73.9999",
+    "postalCode": "10011",
+    "rating": 4.7
+  },
+  {
+    "id": 6,
+    "name": "Seafood Paradise",
+    "coordinates": "40.7432, -73.9889",
+    "postalCode": "10016",
+    "rating": 4.9
+  },
+  {
+    "id": 7,
+    "name": "Southern Comfort",
+    "coordinates": "40.7542, -73.9765",
+    "postalCode": "10019",
+    "rating": 4.4
+  },
+  {
+    "id": 8,
+    "name": "French Bistro",
+    "coordinates": "40.7601, -73.9830",
+    "postalCode": "10020",
+    "rating": 4.1
+  },
+  {
+    "id": 9,
+    "name": "Authentic Thai",
+    "coordinates": "50.7453, -103.9948",
+    "postalCode": "10001",
+    "rating": 4.3
+  },
+  {
+    "id": 10,
+    "name": "Mediterranean Delicacies",
+    "coordinates": "40.7511, -73.9752",
+    "postalCode": "10017",
+    "rating": 4.5
+  }
+]

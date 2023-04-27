@@ -23,3 +23,39 @@
 .restaurant-info {
   margin: 3px 0;
 }
+
+.show-more-button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background-color: #fd6c01;
+  border: 1px solid #fd6c01;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
+  text-align: center;
+}
+
+.show-more-button:hover {
+  background-color: #b84f03;
+}
+
+.show-less-button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background-color: #fd6c01;
+  border: 1px solid #fd6c01;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
+  text-align: center;
+}
+
+.show-less-button:hover {
+  background-color: #b84f03;
+}

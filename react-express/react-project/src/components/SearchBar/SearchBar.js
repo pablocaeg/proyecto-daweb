@@ -1,19 +1,31 @@
 import React from 'react';
 
-import Filters from "../Filters/Filters.js"
+import Filters from '../Filters/Filters.js';
 
-const SearchBar = () => {
+const SearchBar = ({
+  onRatingFilterChange,
+  onSearchQueryChange,
+  onLatitudeChange,
+  onLongitudeChange,
+  onDistanceChange,
+}) => {
   return (
     <>
-    <Filters/>
-    <div className="searchbar-container">
-      <input
-        className="search-input"
-        type="search"
-        placeholder="Search..."
+      <Filters
+        onRatingFilterChange={onRatingFilterChange}
+        onLatitudeChange={onLatitudeChange}
+        onLongitudeChange={onLongitudeChange}
+        onDistanceChange={onDistanceChange}
       />
-      <button className="search-button">Buscar restaurante</button>
-    </div>
+      <div className="searchbar-container">
+        <input
+          className="search-input"
+          type="search"
+          placeholder="Search..."
+          onChange={onSearchQueryChange}
+        />
+        <button className="search-button">Buscar restaurante</button>
+      </div>
     </>
   );
 };

@@ -1,6 +1,11 @@
 import React from 'react';
 
-const Filters = () => {
+const Filters = ({
+  onRatingFilterChange,
+  onLatitudeChange,
+  onLongitudeChange,
+  onDistanceChange,
+}) => {
   return (
     <div className="filters-container">
       <div className="city-rating-container">
@@ -17,6 +22,7 @@ const Filters = () => {
           max="5"
           step="0.1"
           placeholder="Rating (1-5)"
+          onChange={onRatingFilterChange}
         />
       </div>
       <div className="coordinates-kilometers-container">
@@ -28,6 +34,7 @@ const Filters = () => {
             max="90"
             step="0.000001"
             placeholder="Latitude"
+            onChange={onLatitudeChange}
           />
           <input
             className="filter-coordinates"
@@ -36,6 +43,7 @@ const Filters = () => {
             max="180"
             step="0.000001"
             placeholder="Longitude"
+            onChange={onLongitudeChange}
           />
         </div>
         <div className="kilometers-container">
@@ -44,6 +52,7 @@ const Filters = () => {
             type="number"
             min="0"
             placeholder="Distance (km)"
+            onChange={onDistanceChange}
           />
         </div>
       </div>
