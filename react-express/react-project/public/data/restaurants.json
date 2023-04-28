@@ -68,5 +68,12 @@
     "coordinates": "40.7511, -73.9752",
     "postalCode": "10017",
     "rating": 4.5
+  },
+  {
+    "id": 11,
+    "name": "Test Restaurant",
+    "coordinates": "40.7511, -73.9752",
+    "postalCode": "10017",
+    "rating": 4.5
   }
 ]

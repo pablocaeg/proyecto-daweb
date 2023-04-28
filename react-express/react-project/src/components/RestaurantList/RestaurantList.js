@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const toRadians = (degrees) => {
   return (degrees * Math.PI) / 180;
@@ -28,10 +28,15 @@ const RestaurantList = ({
   longitude,
   distance,
 }) => {
-  const [showAll, setShowAll] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [ratingFilter, searchQuery, latitude, longitude, distance]);
 
   const filteredRestaurants = restaurants
-    .filter((restaurant) => restaurant.rating >= ratingFilter)
+    .filter((restaurant) => restaurant.rating > ratingFilter)
     .filter((restaurant) =>
       restaurant.name.toLowerCase().includes(searchQuery.toLowerCase())
     )
@@ -43,9 +48,16 @@ const RestaurantList = ({
       return true;
     });
 
-  const displayedRestaurants = showAll
-    ? filteredRestaurants
-    : filteredRestaurants.slice(0, 5);
+  const totalPages = Math.ceil(filteredRestaurants.length / itemsPerPage);
+
+  const displayedRestaurants = filteredRestaurants.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const changePage = (direction) => {
+    setCurrentPage((prevPage) => prevPage + direction);
+  };
 
   return (
     <div className="restaurant-list">
@@ -59,22 +71,24 @@ const RestaurantList = ({
           <p className="restaurant-info">Rating: {restaurant.rating}</p>
         </div>
       ))}
-      {!showAll && filteredRestaurants.length > 5 && (
-        <button
-          className="show-more-button"
-          onClick={() => setShowAll(true)}
-        >
-          Show More
-        </button>
-      )}
-      {showAll && (
-        <button
-          className="show-less-button"
-          onClick={() => setShowAll(false)}
-        >
-          Show Less
-        </button>
-      )}
+      <div className="pagination-buttons">
+        {currentPage > 1 && (
+          <button
+            className="pagination-button pagination-prev"
+            onClick={() => changePage(-1)}
+          >
+            Previous
+          </button>
+        )}
+        {currentPage < totalPages && (
+          <button
+            className="pagination-button pagination-next"
+            onClick={() => changePage(1)}
+          >
+            Next
+          </button>
+        )}
+      </div>
     </div>
   );
 };
