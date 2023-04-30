@@ -54,4 +54,15 @@
   .restaurant-btn-platos.active {
     background-color: #ccc;
   }
+  .container_img{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    background-color: #ffe682;
+    width: 100%;
+  }
+  .img-full-width {
+    width: 50%;
+  }
+
   

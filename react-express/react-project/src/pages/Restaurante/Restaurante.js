@@ -15,10 +15,12 @@ const Restaurante = () => {
   };
     return (
       <div className="restaurante-container" >
+        <div class="container_img">
+          <img class="img-full-width" src="https://png.pngtree.com/thumb_back/fh260/back_our/20190620/ourmid/pngtree-simple-food-delivery-meal-fashion-poster-background-yellow-back-image_158378.jpg" alt="Imagen del restaurante" />
+        </div>
+
         <h1>Restaurante</h1>
         
-        <h2>Platos</h2>
-
         <div class="restaurant-btn-container">
           <div
           // Agrega una clase condicional al div de "Información". Si activeButton es igual a "info",
