@@ -2,30 +2,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
+  height: 60px;
   background-color: white;
   margin: 10px;
 }
 
 .search-input {
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #fd6c01;
-  border-radius: 3px 0 0 3px;
+  border-radius: 10px;
   outline: none;
-  width: 300px;
+  width: 500px;
+  font-size: 16px;
 }
 
-.search-button {
-  padding: 10px;
-  background-color: #fd6c01;
-  border: 1px solid #fd6c01;
-  color: white;
+.search-results-info {
+  text-align: center;
   font-size: 14px;
-  cursor: pointer;
-  border-radius: 0 3px 3px 0;
-  outline: none;
-}
-
-.search-button:hover {
-  background-color: #b84f03;
+  color: #333;
+  margin: 5px 0;
 }

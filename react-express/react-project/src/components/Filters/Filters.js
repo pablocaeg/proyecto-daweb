@@ -15,18 +15,20 @@ const Filters = ({
           <option value="madrid">Madrid</option>
           <option value="madrid">Torreagüera</option>
         </select>
+        <label className="filter-label">Rating</label>
         <input
           className="filter-rating"
           type="number"
           min="1"
           max="5"
           step="0.1"
-          placeholder="Rating (1-5)"
+          placeholder="1-5"
           onChange={onRatingFilterChange}
         />
       </div>
       <div className="coordinates-kilometers-container">
         <div className="coordinates-container">
+          <label className="filter-label">Latitude</label>
           <input
             className="filter-coordinates"
             type="number"
@@ -36,6 +38,7 @@ const Filters = ({
             placeholder="Latitude"
             onChange={onLatitudeChange}
           />
+          <label className="filter-label">Longitude</label>
           <input
             className="filter-coordinates"
             type="number"
@@ -47,11 +50,12 @@ const Filters = ({
           />
         </div>
         <div className="kilometers-container">
+          <label className="filter-label">Distance</label>
           <input
             className="filter-kilometers"
             type="number"
             min="0"
-            placeholder="Distance (km)"
+            placeholder="km"
             onChange={onDistanceChange}
           />
         </div>

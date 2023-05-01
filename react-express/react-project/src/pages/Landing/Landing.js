@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import SearchBar from '../../components/SearchBar/SearchBar.js';
-import RestaurantList from '../../components/RestaurantList/RestaurantList.js';
+import SearchBar from "../../components/SearchBar/SearchBar.js";
+import RestaurantList from "../../components/RestaurantList/RestaurantList.js";
 
 const Landing = ({ restaurants }) => {
-  const [ratingFilter, setRatingFilter] = useState('');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [latitude, setLatitude] = useState('');
-  const [longitude, setLongitude] = useState('');
-  const [distance, setDistance] = useState('');
+  const [ratingFilter, setRatingFilter] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
+  const [distance, setDistance] = useState("");
+  const [searchBarCount, setSearchBarCount] = useState(0);
 
   const handleRatingFilterChange = (e) => {
     setRatingFilter(e.target.value);
@@ -29,7 +30,6 @@ const Landing = ({ restaurants }) => {
   const handleDistanceChange = (e) => {
     setDistance(e.target.value);
   };
-
   return (
     <>
       <SearchBar
@@ -38,6 +38,8 @@ const Landing = ({ restaurants }) => {
         onLatitudeChange={handleLatitudeChange}
         onLongitudeChange={handleLongitudeChange}
         onDistanceChange={handleDistanceChange}
+        count={searchBarCount}
+        searchQuery={searchQuery}
       />
       <RestaurantList
         restaurants={restaurants}
@@ -46,6 +48,7 @@ const Landing = ({ restaurants }) => {
         latitude={latitude}
         longitude={longitude}
         distance={distance}
+        setSearchBarCount={setSearchBarCount}
       />
     </>
   );

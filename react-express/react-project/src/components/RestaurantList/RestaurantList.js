@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const toRadians = (degrees) => {
   return (degrees * Math.PI) / 180;
@@ -27,6 +27,7 @@ const RestaurantList = ({
   latitude,
   longitude,
   distance,
+  setSearchBarCount,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
@@ -42,11 +43,13 @@ const RestaurantList = ({
     )
     .filter((restaurant) => {
       if (latitude && longitude && distance) {
-        const [lat, lon] = restaurant.coordinates.split(', ').map(Number);
+        const [lat, lon] = restaurant.coordinates.split(", ").map(Number);
         return getDistance(lat, lon, latitude, longitude) <= distance;
       }
       return true;
     });
+
+  setSearchBarCount(filteredRestaurants.length);
 
   const totalPages = Math.ceil(filteredRestaurants.length / itemsPerPage);
 
@@ -67,7 +70,9 @@ const RestaurantList = ({
           <p className="restaurant-info">
             Coordinates: {restaurant.coordinates}
           </p>
-          <p className="restaurant-info">Postal Code: {restaurant.postalCode}</p>
+          <p className="restaurant-info">
+            Postal Code: {restaurant.postalCode}
+          </p>
           <p className="restaurant-info">Rating: {restaurant.rating}</p>
         </div>
       ))}
@@ -77,7 +82,7 @@ const RestaurantList = ({
             className="pagination-button pagination-prev"
             onClick={() => changePage(-1)}
           >
-            Previous
+            Anterior
           </button>
         )}
         {currentPage < totalPages && (
@@ -85,12 +90,14 @@ const RestaurantList = ({
             className="pagination-button pagination-next"
             onClick={() => changePage(1)}
           >
-            Next
+            Siguiente
           </button>
         )}
-        <h3>{currentPage}/</h3>
-        <h3>{totalPages}</h3>
-
+        <div className="page-info">
+          <h3>{currentPage}</h3>
+          <span>/</span>
+          <h3>{totalPages}</h3>
+        </div>
       </div>
     </div>
   );

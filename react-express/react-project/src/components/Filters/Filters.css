@@ -1,3 +1,8 @@
+.kilometers-container {
+  display: flex;
+  align-items: center;
+}
+
 .filters-container {
   display: flex;
   justify-content: center;
@@ -8,8 +13,13 @@
 
 .city-rating-container {
   display: flex;
-  gap: 10px;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.filter-city {
+  display: none;
 }
 
 .filter-city,
@@ -18,9 +28,11 @@
 .filter-rating {
   padding: 10px;
   border: 1px solid #ff7f50;
-  border-radius: 3px;
+  border-radius: 5px;
   outline: none;
   font-size: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .filter-rating {
@@ -32,6 +44,7 @@
 .filter-kilometers:focus,
 .filter-rating:focus {
   border-color: #ff9a72;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .coordinates-kilometers-container {
@@ -39,16 +52,24 @@
   flex-direction: column;
   align-items: center;
   gap: 5px;
-  border-radius: 3px;
+  border-radius: 5px;
   padding: 10px;
+  background-color: #f7f7f7;
 }
 
-.coordinates-container {
+.coordinates-container,
+.kilometers-container {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 5px;
 }
 
-.kilometers-container {
-  display: flex;
-  align-items: center;
+.filter-label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
 }
+
+

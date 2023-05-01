@@ -8,6 +8,8 @@ const SearchBar = ({
   onLatitudeChange,
   onLongitudeChange,
   onDistanceChange,
+  count,
+  searchQuery
 }) => {
   return (
     <>
@@ -21,9 +23,14 @@ const SearchBar = ({
         <input
           className="search-input"
           type="search"
-          placeholder="Search..."
+          placeholder="Buscar restaurante..."
           onChange={onSearchQueryChange}
         />
+      </div>
+      <div className="search-results-info">
+        {searchQuery
+          ? `${count} restaurantes que contienen "${searchQuery}" están siendo mostrados`
+          : `${count} restaurantes están siendo mostrados`}
       </div>
     </>
   );

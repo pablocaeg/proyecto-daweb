@@ -44,3 +44,18 @@
 .pagination-button:hover {
   background-color: #b84f03;
 }
+
+.page-info {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.page-info h3 {
+  margin: 0;
+  padding: 0 5px;
+}
+
+.page-info span {
+  padding: 0 3px;
+}
