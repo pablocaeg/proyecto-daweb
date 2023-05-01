@@ -11,7 +11,7 @@ const App = () => {
   const [restaurants, setRestaurants] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const getRestaurantes = async () => {
       try {
         const response = await fetch('./data/restaurants.json');
         if (!response.ok) {
@@ -24,7 +24,7 @@ const App = () => {
       }
     };
 
-    fetchData();
+    getRestaurantes();
   }, []);
 
   return (

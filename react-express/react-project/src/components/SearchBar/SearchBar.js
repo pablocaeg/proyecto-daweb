@@ -24,7 +24,6 @@ const SearchBar = ({
           placeholder="Search..."
           onChange={onSearchQueryChange}
         />
-        <button className="search-button">Buscar restaurante</button>
       </div>
     </>
   );

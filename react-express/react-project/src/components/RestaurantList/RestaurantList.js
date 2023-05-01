@@ -36,7 +36,7 @@ const RestaurantList = ({
   }, [ratingFilter, searchQuery, latitude, longitude, distance]);
 
   const filteredRestaurants = restaurants
-    .filter((restaurant) => restaurant.rating > ratingFilter)
+    .filter((restaurant) => restaurant.rating >= ratingFilter)
     .filter((restaurant) =>
       restaurant.name.toLowerCase().includes(searchQuery.toLowerCase())
     )
@@ -88,6 +88,9 @@ const RestaurantList = ({
             Next
           </button>
         )}
+        <h3>{currentPage}/</h3>
+        <h3>{totalPages}</h3>
+
       </div>
     </div>
   );
