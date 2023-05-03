@@ -34,7 +34,7 @@ const App = () => {
         <Routes>
           <Route path="/contact" element={<Contact />} />
           <Route path="/" element={<Landing restaurants={restaurants} />} />
-          <Route path="/restaurante/*" element={<Restaurante />} />
+          <Route path="/restaurante/:id" element={<Restaurante restaurants={restaurants} />} />
         </Routes>
       </main>
       <Footer />

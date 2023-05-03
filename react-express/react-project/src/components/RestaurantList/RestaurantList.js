@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const toRadians = (degrees) => {
   return (degrees * Math.PI) / 180;
@@ -65,16 +66,21 @@ const RestaurantList = ({
   return (
     <div className="restaurant-list">
       {displayedRestaurants.map((restaurant) => (
-        <div className="restaurant-item" key={restaurant.id}>
-          <h3 className="restaurant-name">{restaurant.name}</h3>
-          <p className="restaurant-info">
-            Coordinates: {restaurant.coordinates}
-          </p>
-          <p className="restaurant-info">
-            Postal Code: {restaurant.postalCode}
-          </p>
-          <p className="restaurant-info">Rating: {restaurant.rating}</p>
-        </div>
+        <Link
+          to={`/restaurante/${restaurant.id}`}
+          style={{ textDecoration: "none" }}
+        >
+          <div className="restaurant-item" key={restaurant.id}>
+            <h3 className="restaurant-name">{restaurant.name}</h3>
+            <p className="restaurant-info">
+              Coordinates: {restaurant.coordinates}
+            </p>
+            <p className="restaurant-info">
+              Postal Code: {restaurant.postalCode}
+            </p>
+            <p className="restaurant-info">Rating: {restaurant.rating}</p>
+          </div>
+        </Link>
       ))}
       <div className="pagination-buttons">
         {currentPage > 1 && (

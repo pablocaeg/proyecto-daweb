@@ -1,56 +1,59 @@
 import React, { useState } from "react";
-
-import { Route, Routes} from "react-router-dom"
-import { Link } from "react-router-dom"
-
+import { useParams } from "react-router-dom";
 import InfoRestaurante from "../../components/InfoRestaurante/InfoRestaurante.js";
 import Platos from "../../components/Platos/Platos.js";
 
-const Restaurante = () => {
-  const [activeButton, setActiveButton] = useState("info");
-  
-// La función actualiza el estado activeButton utilizando setActiveButton con el valor del argumento button.
-  const handleClick = (button) => {
-    setActiveButton(button);
-  };
-    return (
-      <div className="restaurante-container" >
-        <div class="container_img">
-          <img class="img-full-width" src="https://png.pngtree.com/thumb_back/fh260/back_our/20190620/ourmid/pngtree-simple-food-delivery-meal-fashion-poster-background-yellow-back-image_158378.jpg" alt="Imagen del restaurante" />
-        </div>
+const Restaurante = ({ restaurants }) => {
+  const { id } = useParams();
+  const restaurant = restaurants.find((r) => r.id === parseInt(id, 10));
+  const [displayedComponent, setDisplayedComponent] = useState("info");
 
-        <h1>Restaurante</h1>
-        
-        <div class="restaurant-btn-container">
-          <div
-          // Agrega una clase condicional al div de "Información". Si activeButton es igual a "info",
-          // entonces se agrega la clase "active", de lo contrario, no se agrega ninguna clase adicional.
-            class={`restaurant-btn-info ${activeButton === "info" ? "active" : ""}`}
-            // Esta línea asigna un controlador de eventos onClick al div de "Información".
-            // Cuando se hace clic en el div, se llama a la función handleClick con el argumento "info".
-            onClick={() => handleClick("info")}
-          >
-            <Link id="link-inforestaurante" to="/restaurante/inforestaurante">
-              Información
-            </Link>
-          </div>
-          <div
-            class={`restaurant-btn-platos ${
-              activeButton === "platos" ? "active" : ""
-            }`}
-            onClick={() => handleClick("platos")}
-          >
-            <Link id="link-platos" to="/restaurante/platos">
-              Platos
-            </Link>
-          </div>
-        </div>
-        <Routes>
-            <Route path="inforestaurante" element={<InfoRestaurante/>}/>
-            <Route path="platos" element={<Platos/>}/>
-         </Routes>
-      </div>
-    );
+  if (!restaurant) {
+    return <h1>Restaurant not found</h1>;
+  }
+
+  const handleButtonClick = (component) => {
+    setDisplayedComponent(component);
   };
-  
-  export default Restaurante;
+
+  return (
+    <div className="restaurante-container">
+      <div class="container_img">
+        <img
+          class="img-full-width"
+          src="https://png.pngtree.com/thumb_back/fh260/back_our/20190620/ourmid/pngtree-simple-food-delivery-meal-fashion-poster-background-yellow-back-image_158378.jpg"
+          alt="Imagen del restaurante"
+        />
+      </div>
+
+      <h1>{restaurant.name}</h1>
+
+      <div class="restaurant-btn-container">
+        <button id="link-inforestaurante"
+          className={`restaurant-btn-info ${
+            displayedComponent === "info" ? "active" : ""
+          }`}
+          onClick={() => handleButtonClick("info")}
+        >
+          Información
+        </button>
+        <button id="link-platos"
+          className={`restaurant-btn-platos ${
+            displayedComponent === "platos" ? "active" : ""
+          }`}
+          onClick={() => handleButtonClick("platos")}
+        >
+          Platos
+        </button>
+      </div>
+
+      {displayedComponent === "info" ? (
+        <InfoRestaurante />
+      ) : (
+        <Platos />
+      )}
+    </div>
+  );
+};
+
+export default Restaurante;
