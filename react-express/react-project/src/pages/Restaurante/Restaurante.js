@@ -21,7 +21,7 @@ const Restaurante = ({ restaurants }) => {
       <div class="container_img">
         <img
           class="img-full-width"
-          src="https://png.pngtree.com/thumb_back/fh260/back_our/20190620/ourmid/pngtree-simple-food-delivery-meal-fashion-poster-background-yellow-back-image_158378.jpg"
+          src="../delivery_background.jpg"
           alt="Imagen del restaurante"
         />
       </div>
