@@ -6,11 +6,11 @@ const Header = () => {
     <header>
         <img id="app-logo" src="logo-mifoodie.png" alt=""></img>
         <Link id="app-title" to="/">MiFoodie</Link>
-        <nav class="navbar">        
+        <nav className="navbar">        
           {/*Icons*/}
-          <ul class="navbar-nav">
-            <li class="navbar-button">
-              <a class="nav-link" href="contacto.html">Contacto</a>
+          <ul className="navbar-nav">
+            <li className="navbar-button">
+              <a className="nav-link" href="contacto.html">Contacto</a>
             </li>
           </ul>
       </nav>

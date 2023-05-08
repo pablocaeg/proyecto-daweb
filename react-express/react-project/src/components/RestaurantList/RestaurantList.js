@@ -50,7 +50,9 @@ const RestaurantList = ({
       return true;
     });
 
-  setSearchBarCount(filteredRestaurants.length);
+  useEffect(() => {
+    setSearchBarCount(filteredRestaurants.length);
+  }, [filteredRestaurants, setSearchBarCount]);
 
   const totalPages = Math.ceil(filteredRestaurants.length / itemsPerPage);
 
@@ -67,6 +69,7 @@ const RestaurantList = ({
     <div className="restaurant-list">
       {displayedRestaurants.map((restaurant) => (
         <Link
+        key={restaurant.id}
           to={`/restaurante/${restaurant.id}`}
           style={{ textDecoration: "none" }}
         >
