@@ -12,13 +12,28 @@
     font-size: 2rem;
     margin-bottom: 1rem;
   }
-  
+  .info-restaurante-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
   .info-restaurante-container p {
     font-size: 1.2rem;
     margin-bottom: 1rem;
   }
-  
+
   .map-container {
     width: 100%;
     max-width: 600px;
   }
+  .rating-stars {
+    font-size: 1.5rem;
+    position: relative;
+    top: 3px;
+    color: #f5a623;
+  }
+  #rating{
+    font-size: 1rem;
+    color: #f5a623;
+  }
+  
+  

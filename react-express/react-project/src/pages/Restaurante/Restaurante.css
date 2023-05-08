@@ -26,7 +26,7 @@
     left: 50%;
     height: 100%;
     width: 1px;
-    background-color: #ccc;
+    background-color: #ffffff;
   }
   
   .restaurant-btn-info,
@@ -36,6 +36,9 @@
     justify-content: center;
     width: 50%; /* Ajusta el ancho al 50% */
     height: 100%; /* Ajusta la altura al 100% */
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
   }
   
   #link-inforestaurante,
@@ -49,7 +52,7 @@
     text-decoration: none;
     color: #000;
   }
-  
+
   .restaurant-btn-info.active,
   .restaurant-btn-platos.active {
     background-color: #ccc;
