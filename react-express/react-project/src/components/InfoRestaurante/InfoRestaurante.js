@@ -5,10 +5,8 @@ const InfoRestaurante = ({ restaurant }) => {
   const [lat, lon] = restaurant.coordinates.split(', ').map(Number);
 
   return (
-    <div className="Inforestaurante-container">
-      <p>Coordinates: {restaurant.coordinates}</p>
-      <p>Postal Code: {restaurant.postalCode}</p>
-      <p>Rating: {restaurant.rating}</p>
+    <div className="info-restaurante-container">
+      <h1>Dónde estamos</h1>
       <div className="map-container">
         <MapContainer center={[lat, lon]} zoom={13} style={{ height: '400px', width: '100%' }}>
           <TileLayer
@@ -22,6 +20,9 @@ const InfoRestaurante = ({ restaurant }) => {
           </Marker>
         </MapContainer>
       </div>
+      <p>Coordinates: {restaurant.coordinates} | Postal Code: {restaurant.postalCode}</p>
+      <p>Rating: {restaurant.rating}</p>
+      <h1>Incidencias</h1>
     </div>
   );
 };
