@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Contacto</title>
+    <!-- Add Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Add jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Add Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Add custom CSS to maintain original colors and styles -->
+    <style>
+      .contact-form {
+        padding: 1rem;
+        background-color: #f4f4f4;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .form-control {
+        border: 1px solid #fd6c01;
+        font-size: 1.2rem;
+      }
+
+      .form-control:focus {
+        border-color: #fd6c01;
+        box-shadow: 0 0 0 0.2rem rgba(253, 108, 1, 0.25);
+      }
+
+      .btn-primary {
+        background-color: #fd6c01;
+        border-color: #fd6c01;
+      }
+
+      .btn-primary:hover,
+      .btn-primary:focus,
+      .btn-primary:active {
+        background-color: #e26003;
+        border-color: #e26003;
+      }
+
+      /* Header CSS */
+      header {
+        display: flex;
+        padding: 10px;
+        background-color: #fff;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        align-items: center;
+      }
+
+      #app-logo {
+        max-width: 90px;
+        margin-bottom: 0px;
+        margin-left: 5rem;
+      }
+
+      #app-title {
+        margin-top: 0px;
+        margin-left: 10px;
+        margin-bottom: 2.5px;
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: #fd6c01;
+        text-decoration: none;
+      }
+
+      nav.navbar {
+        width: 90%;
+        margin-left: 10px;
+        margin-right: 40px;
+      }
+
+      nav.navbar {
+        margin-right: 30px;
+        width: 90%;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: #000;
+        font-weight: bold;
+        position: relative;
+        background-color: transparent;
+        padding: 15px;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      .navbar-button {
+        margin: 0 10px;
+      }
+
+      /* Footer CSS */
+      footer {
+        margin-top: 30px;
+        background-color: #fd6c01;
+        color: white;
+        display: flex;
+        justify-content: space-around;
+        padding: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .footer-info,
+      .footer-social,
+      .footer-legal {
+        margin-bottom: 1rem;
+      }
+
+      .footer-info h3,
+      .footer-social h3 {
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-social ul {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        gap: 1rem;
+      }
+
+      .footer-social li {
+        cursor: pointer;
+      }
+
+      .footer-legal p {
+        margin: 0.5rem 0;
+      }
+
+      .footer-legal a {
+        color: white;
+        text-decoration: none;
+      }
+
+      .footer-legal a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img id="app-logo" src="logo-mifoodie.png" alt=""></img>
+      <a id="app-title" class="nav-link" href="http://localhost:3000">MiFoodie</a>
+      <nav class="navbar">        
+        <ul class="navbar-nav">
+          <li class="navbar-button">
+            <a class="nav-link" href="contacto.html">Contacto</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+          <form class="contact-form mt-4">
+            <h1 class="text-center">Contacto</h1>
+            <div class="form-group">
+              <input class="form-control" type="text" name="name" placeholder="Nombre" required>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="email" name="email" placeholder="Correo electrónico" required>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="subject" placeholder="Asunto" required>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" type="text" name="message" placeholder="Mensaje" required></textarea>
+            </div>
+            <div class="form-group text-center">
+              <button class="btn btn-primary" type="submit">Enviar correo</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-info">
+        <h3>MiFoodie</h3>
+        <p>Plaza Cardenal Belluga, Murcia</p>
+        <p>Teléfono: 555-555-5555</p>
+        <p>Email: info@mifoodie.com</p>
+      </div>
+      <div class="footer-social">
+        <h3>Síguenos</h3>
+        <ul>
+          <li>Facebook</li>
+          <li>Twitter</li>
+          <li>Instagram</li>
+        </ul>
+      </div>
+      <div class="footer-legal">
+        <p>© 2023 MiFoodie. Todos los derechos reservados.</p>
+        <p>Términos y condiciones | Política de privacidad</p>
+      </div>
+    </footer>
+  </body>
+</html>
+</html>

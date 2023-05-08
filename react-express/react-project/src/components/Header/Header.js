@@ -10,7 +10,7 @@ const Header = () => {
           {/*Icons*/}
           <ul class="navbar-nav">
             <li class="navbar-button">
-              <Link class="nav-link" to="/contact">Contact</Link>
+              <a class="nav-link" href="contacto.html">Contacto</a>
             </li>
           </ul>
       </nav>
