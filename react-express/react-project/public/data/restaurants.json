@@ -4,76 +4,343 @@
     "name": "The Tasty Burger",
     "coordinates": "40.7128, -74.0060",
     "postalCode": "10007",
-    "rating": 4.5
+    "rating": 4.5,
+    "sitios": {
+      "titulo": "Estatua de la Libertad",
+      "resumen": "La Estatua de la Libertad es un símbolo de libertad en Nueva York, EE.UU.",
+      "categorias": ["Historia", "Arquitectura"],
+      "enlacesExternos": ["https://www.nps.gov/stli/index.htm"],
+      "imagenes": ["estatua_libertad_1.jpg", "estatua_libertad_2.jpg"]
+    },
+    "platos": [
+      {
+        "nombre": "Hamburguesa Clásica",
+        "descripcion": "Hamburguesa con carne de res, queso, lechuga, tomate y salsa especial.",
+        "precio": 10
+      },
+      {
+        "nombre": "Papas Fritas",
+        "descripcion": "Deliciosas papas fritas crujientes.",
+        "precio": 4
+      },
+      {
+        "nombre": "Refresco",
+        "descripcion": "Bebida gaseosa de 16 oz.",
+        "precio": 2
+      }
+    ]
   },
   {
     "id": 2,
     "name": "Delicious Sushi",
     "coordinates": "40.7308, -73.9973",
     "postalCode": "10012",
-    "rating": 4.8
+    "rating": 4.8,
+    "sitios": {
+      "titulo": "Central Park",
+      "resumen": "Central Park es un gran parque urbano en Nueva York, EE.UU.",
+      "categorias": ["Naturaleza", "Recreación"],
+      "enlacesExternos": ["https://www.centralparknyc.org/"],
+      "imagenes": ["central_park_1.jpg", "central_park_2.jpg"]
+    },
+    "platos": [
+      {
+        "nombre": "California Roll",
+        "descripcion": "Sushi roll con cangrejo, pepino, aguacate y masago.",
+        "precio": 8
+      },
+      {
+        "nombre": "Sashimi Mixto",
+        "descripcion": "Selección de sashimi fresco del día.",
+        "precio": 18
+      },
+      {
+        "nombre": "Tempura de Camarones",
+        "descripcion": "Camarones tempura fritos acompañados de salsa de soja.",
+        "precio": 12
+      }
+    ]
   },
   {
     "id": 3,
     "name": "Italian Delight",
     "coordinates": "40.7223, -73.9887",
     "postalCode": "10002",
-    "rating": 4.2
+    "rating": 4.2,
+    "sitios": {
+      "titulo": "Museo Guggenheim",
+      "resumen": "El Museo Guggenheim es un museo de arte moderno en Nueva York, EE.UU.",
+      "categorias": ["Arte", "Cultura"],
+      "enlacesExternos": ["https://www.guggenheim.org/"],
+      "imagenes": ["guggenheim_1.jpg", "guggenheim_2.jpg"]
+    },
+    "platos": [
+      {
+        "nombre": "Fettuccine Alfredo",
+        "descripcion": "Fettuccine con salsa cremosa de queso parmesano y mantequilla.",
+        "precio": 14
+      },
+      {
+        "nombre": "Pizza Margherita",
+        "descripcion": "Pizza con salsa de tomate, queso mozzarella y albahaca fresca.",
+        "precio": 12
+      },
+      {
+        "nombre": "Tiramisú",
+        "descripcion": "Postre italiano a base de café, queso mascarpone y bizcocho.",
+        "precio": 8
+      }
+    ]
   },
   {
     "id": 4,
     "name": "Spicy Tacos",
     "coordinates": "40.7315, -74.0105",
     "postalCode": "10014",
-    "rating": 4.6
+    "rating": 4.6,
+    "sitios": {
+      "titulo": "High Line",
+      "resumen": "High Line es un parque lineal elevado en Nueva York, EE.UU.",
+      "categorias": ["Naturaleza", "Arquitectura"],
+      "enlacesExternos": ["https://www.thehighline.org/"],
+      "imagenes": ["high_line_1.jpg", "high_line_2.jpg"]
+    },
+    "platos": [
+      {
+        "nombre": "Tacos al Pastor",
+        "descripcion": "Tacos de carne de cerdo adobada con piña, cilantro y cebolla.",
+        "precio": 10
+      },
+      {
+        "nombre": "Tacos de Camarón",
+        "descripcion": "Tacos de camarón a la parrilla con salsa de aguacate y limón.",
+        "precio": 12
+      },
+      {
+        "nombre": "Guacamole y Chips",
+        "descripcion": "Guacamole fresco servido con chips de tortilla crujientes.",
+        "precio": 6
+      }
+    ]
   },
   {
     "id": 5,
     "name": "Vegetarian Feast",
     "coordinates": "40.7357, -73.9999",
     "postalCode": "10011",
-    "rating": 4.7
+    "rating": 4.7,
+    "sitios": {
+      "titulo": "Times Square",
+      "resumen": "Times Square es un importante centro comercial y de entretenimiento en Nueva York, EE.UU.",
+      "categorias": ["Entretenimiento", "Compras"],
+      "enlacesExternos": ["https://www.timessquarenSquare.com/"],
+      "imagenes": ["times_square_1.jpg", "times_square_2.jpg"]
+    },
+    "platos": [
+      {
+        "nombre": "Ensalada Mediterránea",
+        "descripcion": "Ensalada con lechuga, tomates, pepinos, aceitunas y queso feta.",
+        "precio": 9
+      },
+      {
+        "nombre": "Falafel",
+        "descripcion": "Croquetas de garbanzos con especias, servidas con salsa de yogur.",
+        "precio": 8
+      },
+      {
+        "nombre": "Hummus y Pita",
+        "descripcion": "Hummus cremoso servido con pan pita fresco.",
+        "precio": 6
+      }
+    ]
   },
   {
     "id": 6,
     "name": "Seafood Paradise",
     "coordinates": "40.7432, -73.9889",
     "postalCode": "10016",
-    "rating": 4.9
+    "rating": 4.9,
+    "sitios": {
+      "titulo": "Empire State Building",
+      "resumen": "El Empire State Building es un rascacielos icónico en Nueva York, EE.UU.",
+      "categorias": ["Arquitectura", "Historia"],
+      "enlacesExternos": ["https://www.esbnyc.com/"],
+      "imagenes": ["empire_state_building_1.jpg", "empire_state_building_2.jpg"]
+    },
+    "platos": [
+      {
+        "nombre": "Ceviche Mixto",
+        "descripcion": "Ceviche con pescado, camarones, pulpo, limón y cilantro.",
+        "precio": 14
+      },
+      {
+        "nombre": "Pescado a la Parrilla",
+        "descripcion": "Filete de pescado a la parrilla con salsa de mantequilla y limón.",
+        "precio": 16
+      },
+      {
+        "nombre": "Paella de Mariscos",
+        "descripcion": "Arroz con mariscos, azafrán, pimientos y guisantes.",
+        "precio": 22
+      }
+    ]
   },
   {
     "id": 7,
     "name": "Southern Comfort",
     "coordinates": "40.7542, -73.9765",
     "postalCode": "10019",
-    "rating": 4.4
+    "rating": 4.4,
+    "sitios": {
+      "titulo": "Broadway",
+      "resumen": "Broadway es un distrito teatral famoso en Nueva York, EE.UU.",
+      "categorias": ["Entretenimiento", "Cultura"],
+      "enlacesExternos": ["https://www.broadway.org/"],
+      "imagenes": ["broadway_1.jpg", "broadway_2.jpg"]
+    },
+    "platos": [
+      {
+        "nombre": "Fried Chicken",
+        "descripcion": "Pollo frito crujiente con especias del sur.",
+        "precio": 12
+      },
+      {
+        "nombre": "Mac & Cheese",
+        "descripcion": "Macarrones con queso cheddar cremoso y migas de pan tostado.",
+        "precio": 8
+      },
+      {
+        "nombre": "Collard Greens",
+        "descripcion": "Verduras cocidas lentamente con panceta y caldo de pollo.",
+        "precio": 6
+      }
+    ]
   },
   {
     "id": 8,
     "name": "French Bistro",
     "coordinates": "40.7601, -73.9830",
     "postalCode": "10020",
-    "rating": 4.1
+    "rating": 4.1,
+    "sitios": {
+      "titulo": "Rockefeller Center",
+      "resumen": "El Rockefeller Center es un complejo comercial y de entretenimiento en Nueva York, EE.UU.",
+      "categorias": ["Arquitectura", "Entretenimiento"],
+      "enlacesExternos": ["https://www.rockefellercenter.com/"],
+      "imagenes": ["rockefeller_center_1.jpg", "rockefeller_center_2.jpg"]
+    },
+    "platos": [
+      {
+        "nombre": "Coq au Vin",
+        "descripcion": "Pollo cocido en vino tinto con champiñones y cebollitas.",
+        "precio": 18
+      },
+      {
+        "nombre": "Ratatouille",
+        "descripcion": "Estofado de verduras con calabacín, berenjena, pimiento y tomate.",
+        "precio": 12
+      },
+      {
+        "nombre": "Crème Brûlée",
+        "descripcion": "Postre de crema de vainilla con caramelo crujiente.",
+        "precio": 7
+      }
+    ]
   },
   {
     "id": 9,
     "name": "Authentic Thai",
     "coordinates": "50.7453, -103.9948",
     "postalCode": "10001",
-    "rating": 4.3
+    "rating": 4.3,
+    "sitios": {
+      "titulo": "Museo de Arte Moderno (MoMA)",
+      "resumen": "El MoMA es un importante museo de arte moderno en Nueva York, EE.UU.",
+      "categorias": ["Arte", "Cultura"],
+      "enlacesExternos": ["https://www.moma.org/"],
+      "imagenes": ["moma_1.jpg", "moma_2.jpg"]
+    },
+    "platos": [
+      {
+        "nombre": "Pad Thai",
+        "descripcion": "Fideos de arroz salteados con camarones, tofu, cacahuetes y brotes de soja.",
+        "precio": 12
+      },
+      {
+        "nombre": "Green Curry",
+        "descripcion": "Curry verde tailandés con pollo, berenjena y albahaca.",
+        "precio": 14
+      },
+      {
+        "nombre": "Mango Sticky Rice",
+        "descripcion": "Arroz glutinoso con mango fresco y salsa de coco.",
+        "precio": 6
+      }
+    ]
   },
   {
     "id": 10,
     "name": "Mediterranean Delicacies",
     "coordinates": "40.7511, -73.9752",
     "postalCode": "10017",
-    "rating": 4.5
+    "rating": 4.5,
+    "sitios": {
+      "titulo": "Grand Central Terminal",
+      "resumen": "La Grand Central Terminal es una estación de tren histórica en Nueva York, EE.UU.",
+      "categorias": ["Historia", "Arquitectura"],
+      "enlacesExternos": ["https://www.grandcentralterminal.com/"],
+      "imagenes": [
+        "grand_central_terminal_1.jpg",
+        "grand_central_terminal_2.jpg"
+      ]
+    },
+    "platos": [
+      {
+        "nombre": "Gyros",
+        "descripcion": "Gyros de cordero con tzatziki, tomate y cebolla en pan pita.",
+        "precio": 10
+      },
+      {
+        "nombre": "Spanakopita",
+        "descripcion": "Pastel griego de espinacas y queso feta en hojaldre.",
+        "precio": 7
+      },
+      {
+        "nombre": "Baklava",
+        "descripcion": "Postre de nueces y miel en capas de hojaldre.",
+        "precio": 5
+      }
+    ]
   },
   {
     "id": 11,
     "name": "Test Restaurant",
     "coordinates": "40.7511, -73.9752",
     "postalCode": "10017",
-    "rating": 4.5
+    "rating": 4.5,
+    "sitios": {
+      "titulo": "Bryant Park",
+      "resumen": "Bryant Park es un parque público en el centro de Manhattan, Nueva York, EE.UU.",
+      "categorias": ["Naturaleza", "Recreación"],
+      "enlacesExternos": ["https://bryantpark.org/"],
+      "imagenes": ["bryant_park_1.jpg", "bryant_park_2.jpg"]
+    },
+    "platos": [
+      {
+        "nombre": "Plato de prueba 1",
+        "descripcion": "Descripción del plato de prueba 1.",
+        "precio": 10
+      },
+      {
+        "nombre": "Plato de prueba 2",
+        "descripcion": "Descripción del plato de prueba 2.",
+        "precio": 12
+      },
+      {
+        "nombre": "Plato de prueba 3",
+        "descripcion": "Descripción del plato de prueba 3.",
+        "precio": 15
+      }
+    ]
   }
 ]
