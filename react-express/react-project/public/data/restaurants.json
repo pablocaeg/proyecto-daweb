@@ -12,6 +12,13 @@
         "categorias": ["Historia", "Arquitectura"],
         "enlacesExternos": ["https://www.nps.gov/stli/index.htm"],
         "imagenes": ["estatua_libertad_1.jpg", "estatua_libertad_2.jpg"]
+      },
+      {
+        "titulo": "Central Park",
+        "resumen": "Central Park es un gran parque urbano en Nueva York, EE.UU.",
+        "categorias": ["Naturaleza", "Recreación"],
+        "enlacesExternos": ["https://www.centralparknyc.org/"],
+        "imagenes": ["central_park_1.jpg", "central_park_2.jpg"]
       }
     ],
     "platos": [

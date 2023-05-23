@@ -2,24 +2,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px;
 }
 
 .restaurant-item {
   background-color: white;
   border: 1px solid #fd6c01;
   border-radius: 3px;
-  margin: 10px;
-  padding: 10px;
-  width: 90%;
+  margin: 15px;
+  padding:  10px 20px;
+  width: 100%;
+  position: relative;
+  padding-bottom: 45px;
 }
 
 .restaurant-name {
+  color: black;
   margin: 0px;
   margin-bottom: 8px;
 }
 
 .restaurant-info {
+  color: black;
   margin: 3px 0;
 }
 .pagination-buttons {
@@ -58,3 +61,36 @@
 .page-info span {
   padding: 0 3px;
 }
+
+.restaurant-button-container {
+  position: absolute;
+  top: 120px;
+  right: 10px;
+}
+
+.delete-button,
+.modify-button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid #fd6c01;
+  background-color: #fd6c01;
+  color: white;
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
+  font-size: 14px;
+}
+
+.delete-button {
+  background-color: #e02720fb;
+}
+
+.delete-button:hover {
+  background-color: #b40600;
+}
+
+
+.modify-button:hover {
+  background-color: #b84f03;
+}
+

@@ -16,46 +16,44 @@ header {
     margin-top: 0px;
     margin-left: 10px;
     margin-bottom: 2.5px;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: bold;
     color: #fd6c01;
     text-decoration: none;
   }
-  nav.navbar {
-    width: 90%;
-    margin-left: 10px;
-    margin-right: 40px;
-  }
-  
-  nav.navbar {
-    margin-right: 30px;
-    width: 90%;
+
+  .navbar {
+    width: 80%;
     display: flex;
     justify-content: flex-end;
+    margin: 20px;
+  }
+
+  .navbar-nav {
+    display: flex;
   }
   
-  
   .nav-link {
+    font-size: 1.1rem;
     text-decoration: none;
     color: #000;
     font-weight: bold;
     position: relative;
     background-color: transparent;
-    padding:15px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 8px;
   }
-  
-  .nav-link:hover{
-    background-color: rgba(156, 155, 155, 0.5);
-    border-radius: 10%;
-    padding: 15px;
+
+  .nav-link:hover {
+    background-color: #d6d6d6;
+    cursor: pointer;
+    text-decoration: underline;
   }
+
 
   li{
     list-style: none;
-  }
-
-  .navbar-button {
-    margin: 0 10px;
   }
   
   #app-slogan {
@@ -63,4 +61,5 @@ header {
     font-size: 1.1rem;
     color: #666;
   }
+  
   

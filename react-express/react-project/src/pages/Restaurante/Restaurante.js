@@ -18,9 +18,9 @@ const Restaurante = ({ restaurants }) => {
 
   return (
     <div className="restaurante-container">
-      <div class="container_img">
+      <div className="container_img">
         <img
-          class="img-full-width"
+          className="img-full-width"
           src="../delivery_background.jpg"
           alt="Imagen del restaurante"
         />
@@ -28,7 +28,7 @@ const Restaurante = ({ restaurants }) => {
 
       <h1>{restaurant.name}</h1>
 
-      <div class="restaurant-btn-container">
+      <div className="restaurant-btn-container">
         <button id="link-inforestaurante"
           className={`restaurant-btn-info ${
             displayedComponent === "info" ? "active" : ""

@@ -13,12 +13,6 @@ const SearchBar = ({
 }) => {
   return (
     <>
-      <Filters
-        onRatingFilterChange={onRatingFilterChange}
-        onLatitudeChange={onLatitudeChange}
-        onLongitudeChange={onLongitudeChange}
-        onDistanceChange={onDistanceChange}
-      />
       <div className="searchbar-container">
         <input
           className="search-input"
@@ -32,6 +26,13 @@ const SearchBar = ({
           ? `${count} restaurantes que contienen "${searchQuery}" están siendo mostrados`
           : `${count} restaurantes están siendo mostrados`}
       </div>
+      <Filters
+        onRatingFilterChange={onRatingFilterChange}
+        onLatitudeChange={onLatitudeChange}
+        onLongitudeChange={onLongitudeChange}
+        onDistanceChange={onDistanceChange}
+      />
+
     </>
   );
 };

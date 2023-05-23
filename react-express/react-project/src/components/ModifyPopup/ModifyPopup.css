@@ -1,0 +1,97 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.restaurant-title {
+  margin-top: 8px;
+}
+
+.popup-inner {
+  width: 80%;
+  max-width: 500px;
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  color: #444;
+}
+
+.popup-form {
+  margin-top: 20px;
+}
+
+.form-separator {
+  background-color: #fd6c01;
+  height: 2px;
+  border: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 10px;
+}
+
+input[type="text"] {
+  margin-left: 15px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+button[type="submit"] {
+  background-color: #fd6c01;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 10px 0px;
+}
+
+button[type="submit"]:hover {
+    background-color: #be5306;
+  }
+
+.popup-form fieldset {
+  margin: 15px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.popup-form fieldset legend {
+  padding: 0 10px;
+}
+
+.popup-form label {
+  display: block;
+}
+
+.popup-form input[type="checkbox"] {
+  margin-right: 10px;
+}

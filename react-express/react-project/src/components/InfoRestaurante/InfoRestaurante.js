@@ -73,7 +73,7 @@ const InfoRestaurante = ({ restaurant }) => {
           </Marker>
         </MapContainer>
       </div>
-      <p>Coordinates: {restaurant.coordinates} | Postal Code: {restaurant.postalCode}</p>
+      <p>Coordenadas: {restaurant.coordinates} | Código Postal: {restaurant.postalCode}</p>
       <h3>Rating: <span className="rating-stars">{renderRatingStars(restaurant.rating)} </span><span id="rating">({restaurant.rating})</span></h3>
       <h1>Opiniones</h1>
     </div>

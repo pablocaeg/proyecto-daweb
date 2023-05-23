@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import ModifyPopup from '../ModifyPopup/ModifyPopup.js'
 
 const toRadians = (degrees) => {
   return (degrees * Math.PI) / 180;
+};
+
+const borrarRestaurante = (idrestaurante) => {
+  // LLAMADA POST DELETERESTAURANTE A LA API
 };
 
 const getDistance = (lat1, lon1, lat2, lon2) => {
@@ -31,6 +36,8 @@ const RestaurantList = ({
   setSearchBarCount,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [showPopup, setShowPopup] = useState(false);
+  const [currentRestaurant, setCurrentRestaurant] = useState(null);
   const itemsPerPage = 5;
 
   useEffect(() => {
@@ -67,21 +74,47 @@ const RestaurantList = ({
 
   return (
     <div className="restaurant-list">
+      {showPopup && currentRestaurant && (
+        <ModifyPopup restaurant={currentRestaurant} onClose={() => setShowPopup(false)} />
+      )}
       {displayedRestaurants.map((restaurant) => (
         <Link
-        key={restaurant.id}
+          key={restaurant.id}
           to={`/restaurante/${restaurant.id}`}
           style={{ textDecoration: "none" }}
         >
           <div className="restaurant-item" key={restaurant.id}>
             <h3 className="restaurant-name">{restaurant.name}</h3>
             <p className="restaurant-info">
-              Coordinates: {restaurant.coordinates}
+              Coordenadas: {restaurant.coordinates}
             </p>
             <p className="restaurant-info">
-              Postal Code: {restaurant.postalCode}
+              Código postal: {restaurant.postalCode}
             </p>
             <p className="restaurant-info">Rating: {restaurant.rating}</p>
+            <div className="restaurant-button-container">
+            <button
+                className="modify-button"
+                onClick={(event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  setShowPopup(true);
+                  setCurrentRestaurant(restaurant);
+                }}
+              >
+                Modificar
+              </button>
+              <button
+                className="delete-button"
+                onClick={(event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  borrarRestaurante(restaurant.id)
+                }}
+              >
+                Borrar
+              </button>
+            </div>
           </div>
         </Link>
       ))}

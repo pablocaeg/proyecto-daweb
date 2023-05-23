@@ -11,6 +11,8 @@ import './components/Filters/Filters.css'
 import './components/SearchBar/SearchBar.css'
 import './pages/Contact/Contact.css'
 import './pages/Restaurante/Restaurante.css'
+import './components/ModifyPopup/ModifyPopup.css'
+
 import App from './App';
 
 import reportWebVitals from './reportWebVitals';

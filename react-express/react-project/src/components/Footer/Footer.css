@@ -1,6 +1,7 @@
 
 /* Footer styles */
 footer {
+  margin-top: 40px;
     background-color: #fd6c01;
     color: white;
     display: flex;
