@@ -1,4 +1,4 @@
-.popup {
+.modify-popup {
   overflow: auto;
   position: fixed;
   top: 0;
@@ -16,7 +16,7 @@
   margin-top: 8px;
 }
 
-.popup-inner {
+.modify-popup-inner {
   overflow: scroll;
   height: 80%;
   width: 80%;

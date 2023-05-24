@@ -34,6 +34,9 @@ const RestaurantList = ({
   longitude,
   distance,
   setSearchBarCount,
+  modifyRestaurant,
+  deleteRestaurant,
+  addPlato,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showPopup, setShowPopup] = useState(false);
@@ -75,7 +78,7 @@ const RestaurantList = ({
   return (
     <div className="restaurant-list">
       {showPopup && currentRestaurant && (
-        <ModifyPopup restaurant={currentRestaurant} onClose={() => setShowPopup(false)} />
+        <ModifyPopup addPlato={addPlato} modifyRestaurant={modifyRestaurant} deleteRestaurant={deleteRestaurant} restaurant={currentRestaurant} onClose={() => setShowPopup(false)} />
       )}
       {displayedRestaurants.map((restaurant) => (
         <Link

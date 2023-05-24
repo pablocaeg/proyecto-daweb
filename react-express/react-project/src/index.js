@@ -12,6 +12,7 @@ import './components/SearchBar/SearchBar.css'
 import './pages/Contact/Contact.css'
 import './pages/Restaurante/Restaurante.css'
 import './components/ModifyPopup/ModifyPopup.css'
+import './components/AddPopup/AddPopup.css'
 
 import App from './App';
 

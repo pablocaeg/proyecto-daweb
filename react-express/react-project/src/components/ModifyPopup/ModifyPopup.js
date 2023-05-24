@@ -1,7 +1,7 @@
 // ModifyPopup.js
 import React, { useState, useEffect } from "react";
 
-const ModifyPopup = ({ restaurant, onClose }) => {
+const ModifyPopup = ({ restaurant, onClose, modifyRestaurant }) => {
   const [name, setName] = useState(restaurant.name);
   const [coordinates, setCoordinates] = useState(restaurant.coordinates);
   const [city, setCity] = useState(restaurant.postalCode);
@@ -63,8 +63,8 @@ const ModifyPopup = ({ restaurant, onClose }) => {
   };
 
   return (
-    <div className="popup">
-      <div className="popup-inner">
+    <div className="modify-popup">
+      <div className="modify-popup-inner">
         <button className="close-btn" onClick={onClose}>
           X
         </button>

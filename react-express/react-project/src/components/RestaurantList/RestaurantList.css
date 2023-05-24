@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .restaurant-item {
@@ -10,7 +11,7 @@
   border-radius: 3px;
   margin: 15px;
   padding:  10px 20px;
-  width: 100%;
+  width: 80%;
   position: relative;
   padding-bottom: 45px;
 }

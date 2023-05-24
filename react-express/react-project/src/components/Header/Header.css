@@ -34,7 +34,7 @@ header {
   }
   
   .nav-link {
-    font-size: 1.1rem;
+    font-size: 1rem;
     text-decoration: none;
     color: #000;
     font-weight: bold;
@@ -46,7 +46,6 @@ header {
   }
 
   .nav-link:hover {
-    background-color: #d6d6d6;
     cursor: pointer;
     text-decoration: underline;
   }
