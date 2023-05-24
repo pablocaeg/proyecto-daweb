@@ -13,16 +13,19 @@ const App = () => {
   useEffect(() => {
     const getRestaurantes = async () => {
       try {
-        const response = await fetch('./data/restaurants.json');
+        const response = await fetch('http://localhost:3000/api/restaurantes');
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
+    
         const data = await response.json();
-        setRestaurants(data);
+        console.log('Data received from server:', data);
+        setRestaurants(data.restaurante);
       } catch (error) {
         console.error('Error fetching restaurants data:', error);
       }
     };
+    
 
     getRestaurantes();
   }, []);
