@@ -1,4 +1,5 @@
 .popup {
+  overflow: auto;
   position: fixed;
   top: 0;
   left: 0;
@@ -16,6 +17,8 @@
 }
 
 .popup-inner {
+  overflow: scroll;
+  height: 80%;
   width: 80%;
   max-width: 500px;
   background: white;
