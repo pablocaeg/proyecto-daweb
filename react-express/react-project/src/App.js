@@ -27,22 +27,57 @@ const App = () => {
     
 
   const addRestaurant = async (restaurant) => {
-    // your fetch code for POST method to add the restaurant
-    // After adding the restaurant, call getRestaurants to update the state
-    await getRestaurants();
-  };
+    try {
+        const response = await fetch('http://localhost:3000/api/restaurantes', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            // El body de la petición es el restaurante que se quiere añadir
+            body: JSON.stringify(restaurant)
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        // Al modificar el restaurante, se vuelve a hacer la petición para obtener los restaurantes actualizados
+        await getRestaurants();
+    } catch (error) {
+        console.error('Error adding restaurant:', error);
+    }
+};
 
-  const modifyRestaurant = async (restaurant) => {
-    // your fetch code for POST method to add the restaurant
-    // After adding the restaurant, call getRestaurants to update the state
-    await getRestaurants();
-  };
+const modifyRestaurant = async (restaurant) => {
+    try {
+        const response = await fetch(`http://localhost:3000/api/restaurantes/${restaurant.id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(restaurant)
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        await getRestaurants();
+    } catch (error) {
+        console.error('Error modifying restaurant:', error);
+    }
+};
 
-  const deleteRestaurant = async (restaurant) => {
-    // your fetch code for POST method to add the restaurant
-    // After adding the restaurant, call getRestaurants to update the state
-    await getRestaurants();
-  };
+const deleteRestaurant = async (restaurant) => {
+    try {
+        const response = await fetch(`http://localhost:3000/api/restaurantes/${restaurant.id}`, {
+            method: 'DELETE'
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        await getRestaurants();
+    } catch (error) {
+        console.error('Error deleting restaurant:', error);
+    }
+};
+
 
   
   const addPlato = async (restaurant) => {
