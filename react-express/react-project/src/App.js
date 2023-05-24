@@ -12,16 +12,19 @@ const App = () => {
 
   const getRestaurants = async () => {
     try {
-      const response = await fetch('./data/restaurants.json');
+      const response = await fetch('http://localhost:3000/api/restaurantes');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
+    
       const data = await response.json();
-      setRestaurants(data);
+        console.log('Data received from server:', data);
+      setRestaurants(data.restaurante);
     } catch (error) {
       console.error('Error fetching restaurants data:', error);
     }
   };
+    
 
   const addRestaurant = async (restaurant) => {
     // your fetch code for POST method to add the restaurant

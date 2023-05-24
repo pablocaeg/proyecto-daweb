@@ -52,7 +52,7 @@ const ModifyPopup = ({ restaurant, onClose, modifyRestaurant }) => {
 
   const handlePlatoSubmit = (e) => {
     e.preventDefault();
-    // PETICION POST ADDPLATO A LA API
+    //? PETICION POST ADDPLATO A LA API
     console.log({ nombre, descripcion, precio, disponibilidad });
   };
 
