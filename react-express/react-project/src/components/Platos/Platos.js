@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Platos = () => {
+const Platos = ({ restaurant }) => {
   return (
     <div className="platos-container">
         <h1>PLATOS</h1>

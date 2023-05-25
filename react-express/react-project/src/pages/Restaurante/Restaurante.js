@@ -46,7 +46,7 @@ const Restaurante = ({ restaurant }) => {
 
       {displayedComponent === "info" ? (
         <InfoRestaurante restaurant={restaurant} />      ) : (
-        <Platos />
+        <Platos  restaurant={restaurant} />
       )}
     </div>
   );
