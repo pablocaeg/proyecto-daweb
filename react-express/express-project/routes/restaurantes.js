@@ -12,6 +12,17 @@ router.get('/', async (req, res) => {
   }
 });
 
+// GET Restaurant
+router.get('/:id', async (req, res) => {
+  try {
+    const { data } = await axios.get(`http://localhost:8080/api/restaurantes/${req.params.id}`);
+    res.json(data);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'error obteniendo los restaurantes' });
+  }
+});
+
 // Handle POST request
 router.post('/', async (req, res) => {
   try {

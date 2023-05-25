@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import SearchBar from "../../components/SearchBar/SearchBar.js";
 import RestaurantList from "../../components/RestaurantList/RestaurantList.js";
 
-const Landing = ({ restaurants, modifyRestaurant, deleteRestaurant, addPlato }) => {
+const Landing = ({ getRestaurant, restaurants, modifyRestaurant, deleteRestaurant, addPlato }) => {
   const [ratingFilter, setRatingFilter] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [latitude, setLatitude] = useState("");
@@ -52,6 +52,7 @@ const Landing = ({ restaurants, modifyRestaurant, deleteRestaurant, addPlato }) 
         distance={distance}
         setSearchBarCount={setSearchBarCount}
         addPlato = {addPlato}
+        getRestaurant = {getRestaurant}
       />
     </>
   );

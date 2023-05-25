@@ -9,6 +9,9 @@ import Restaurante from './pages/Restaurante/Restaurante.js';
 
 const App = () => {
   const [restaurants, setRestaurants] = useState([]);
+  const [restaurant, setRestaurant] = useState([]);
+  const [loading, setLoading] = useState(false);
+  
 
   const getRestaurants = async () => {
     try {
@@ -18,13 +21,29 @@ const App = () => {
       }
     
       const data = await response.json();
-        console.log('Data received from server:', data);
+        console.log('Data received from server:', data.restaurante);
       setRestaurants(data.restaurante);
     } catch (error) {
       console.error('Error fetching restaurants data:', error);
     }
   };
+  
+  const getRestaurant = async (idrestaurante) => {
+    try {
+      setLoading(true);
+      const response = await fetch(`http://localhost:3000/api/restaurantes/${idrestaurante}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
     
+      const data = await response.json();
+      console.log(data)
+      setRestaurant(data)
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching restaurants data:', error);
+    }
+  };
 
   const addRestaurant = async (restaurant) => {
     try {
@@ -96,9 +115,15 @@ const deleteRestaurant = async (restaurant) => {
       <main>
         <Routes>
           <Route path="/contact" element={<Contact />} />
-          <Route path="/" element={<Landing addPlato={addPlato} modifyRestaurant={modifyRestaurant} deleteRestaurant={deleteRestaurant} restaurants={restaurants} />} />
-          <Route path="/restaurante/:id" element={<Restaurante restaurants={restaurants} />} />
-        </Routes>
+          <Route path="/" element={<Landing getRestaurant={getRestaurant} addPlato={addPlato} modifyRestaurant={modifyRestaurant} deleteRestaurant={deleteRestaurant} restaurants={restaurants} />} />
+          <Route 
+            path="/restaurante/:id" 
+            element={
+              loading 
+                ? <p>Loading...</p> 
+                : <Restaurante restaurant={restaurant} />
+            } 
+          />        </Routes>
       </main>
       <Footer />
     </>

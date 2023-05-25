@@ -2,7 +2,8 @@ import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
 const InfoRestaurante = ({ restaurant }) => {
-  const [lat, lon] = restaurant.coordinates.split(', ').map(Number);
+  console.log(restaurant)
+  const [lat, lon] = restaurant.coordenadas.split(',').map(Number);
 
   const renderRatingStars = (rating) => {
     const maxRating = 5; // Set the maximum rating value here
@@ -57,7 +58,7 @@ const InfoRestaurante = ({ restaurant }) => {
     return stars;
   };
 
-  return (
+return (
     <div className="info-restaurante-container">
       <h1>Dónde estamos</h1>
       <div className="map-container">
@@ -68,17 +69,18 @@ const InfoRestaurante = ({ restaurant }) => {
           />
           <Marker position={[lat, lon]}>
             <Popup>
-              {restaurant.name}
+              {restaurant.nombre}
             </Popup>
           </Marker>
         </MapContainer>
       </div>
-      <p>Coordenadas: {restaurant.coordinates} | Código Postal: {restaurant.postalCode}</p>
-      <h3>Rating: <span className="rating-stars">{renderRatingStars(restaurant.rating)} </span><span id="rating">({restaurant.rating})</span></h3>
+      <p>Coordenadas: {restaurant.coordenadas} | Código Postal: {restaurant.codigoPostal}</p>
+      <h3>Rating: <span className="rating-stars">{renderRatingStars(restaurant.calificacionMedia)} </span><span id="rating">({restaurant.calificacionMedia})</span></h3>
       <h1>Opiniones</h1>
     </div>
   );
 };
+
 
 export default InfoRestaurante;
 

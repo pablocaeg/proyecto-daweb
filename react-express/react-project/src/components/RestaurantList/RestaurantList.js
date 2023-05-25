@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import ModifyPopup from '../ModifyPopup/ModifyPopup.js'
+import ModifyPopup from "../ModifyPopup/ModifyPopup.js";
 
 const toRadians = (degrees) => {
   return (degrees * Math.PI) / 180;
@@ -37,6 +37,7 @@ const RestaurantList = ({
   modifyRestaurant,
   deleteRestaurant,
   addPlato,
+  getRestaurant,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showPopup, setShowPopup] = useState(false);
@@ -48,13 +49,16 @@ const RestaurantList = ({
   }, [ratingFilter, searchQuery, latitude, longitude, distance]);
 
   const filteredRestaurants = restaurants
-    .filter((restaurant) => restaurant.rating >= ratingFilter)
     .filter((restaurant) =>
-      restaurant.name.toLowerCase().includes(searchQuery.toLowerCase())
+      restaurant.resumen.nombre
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase())
     )
     .filter((restaurant) => {
       if (latitude && longitude && distance) {
-        const [lat, lon] = restaurant.coordinates.split(", ").map(Number);
+        const [lat, lon] = restaurant.resumen.coordenadas
+          .split(",")
+          .map(Number);
         return getDistance(lat, lon, latitude, longitude) <= distance;
       }
       return true;
@@ -78,25 +82,31 @@ const RestaurantList = ({
   return (
     <div className="restaurant-list">
       {showPopup && currentRestaurant && (
-        <ModifyPopup addPlato={addPlato} modifyRestaurant={modifyRestaurant} deleteRestaurant={deleteRestaurant} restaurant={currentRestaurant} onClose={() => setShowPopup(false)} />
+        <ModifyPopup
+          addPlato={addPlato}
+          modifyRestaurant={modifyRestaurant}
+          deleteRestaurant={deleteRestaurant}
+          restaurant={currentRestaurant}
+          onClose={() => setShowPopup(false)}
+        />
       )}
       {displayedRestaurants.map((restaurant) => (
         <Link
-          key={restaurant.id}
-          to={`/restaurante/${restaurant.id}`}
+          key={restaurant.resumen.id}
+          onClick={() => getRestaurant(restaurant.resumen.id)}
+          to={`/restaurante/${restaurant.resumen.id}`}
           style={{ textDecoration: "none" }}
         >
-          <div className="restaurant-item" key={restaurant.id}>
-            <h3 className="restaurant-name">{restaurant.name}</h3>
+          <div className="restaurant-item" key={restaurant.resumen.id}>
+            <h3 className="restaurant-name">{restaurant.resumen.nombre}</h3>
             <p className="restaurant-info">
-              Coordenadas: {restaurant.coordinates}
+              Coordenadas: {restaurant.resumen.coordenadas}
             </p>
             <p className="restaurant-info">
-              Código postal: {restaurant.postalCode}
+              Código postal: {restaurant.resumen.codigoPostal}
             </p>
-            <p className="restaurant-info">Rating: {restaurant.rating}</p>
             <div className="restaurant-button-container">
-            <button
+              <button
                 className="modify-button"
                 onClick={(event) => {
                   event.preventDefault();
@@ -112,7 +122,7 @@ const RestaurantList = ({
                 onClick={(event) => {
                   event.preventDefault();
                   event.stopPropagation();
-                  borrarRestaurante(restaurant.id)
+                  borrarRestaurante(restaurant.resumen.id);
                 }}
               >
                 Borrar

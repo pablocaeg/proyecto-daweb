@@ -1,15 +1,12 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
 import InfoRestaurante from "../../components/InfoRestaurante/InfoRestaurante.js";
 import Platos from "../../components/Platos/Platos.js";
 
-const Restaurante = ({ restaurants }) => {
-  const { id } = useParams();
-  const restaurant = restaurants.find((r) => r.id === parseInt(id, 10));
+const Restaurante = ({ restaurant }) => {
   const [displayedComponent, setDisplayedComponent] = useState("info");
 
   if (!restaurant) {
-    return <h1>Restaurant not found</h1>;
+    return <h1>Restaurante no encontrado</h1>;
   }
 
   const handleButtonClick = (component) => {
@@ -26,7 +23,7 @@ const Restaurante = ({ restaurants }) => {
         />
       </div>
 
-      <h1>{restaurant.name}</h1>
+      <h1>{restaurant.nombre}</h1>
 
       <div className="restaurant-btn-container">
         <button id="link-inforestaurante"

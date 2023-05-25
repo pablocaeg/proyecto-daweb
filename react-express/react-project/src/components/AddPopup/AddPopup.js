@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
 const AddPopup = ({ onClose, addRestaurant }) => {
-  const [name, setName] = useState("");
-  const [coordinates, setCoordinates] = useState("");
-  const [city, setCity] = useState("");
+  const [nombre, setName] = useState("");
+  const [coordenadas, setCoordinates] = useState("");
+  const [ciudad, setCity] = useState("");
 
   const handleAddRestauranteSubmit = (e) => {
     e.preventDefault();
     // VALORES QUE SE LE PASAN AL POST ADDRESTAURANT.
-    addRestaurant({ name, coordinates, city });
+    addRestaurant({ nombre, coordenadas });
     setName("");
     setCoordinates("");
     setCity("");
@@ -28,7 +28,7 @@ const AddPopup = ({ onClose, addRestaurant }) => {
             Nombre:
             <input
               type="text"
-              value={name}
+              value={nombre}
               onChange={(e) => setName(e.target.value)}
             />
           </label>
@@ -36,7 +36,7 @@ const AddPopup = ({ onClose, addRestaurant }) => {
             Coordenadas:
             <input
               type="text"
-              value={coordinates}
+              value={coordenadas}
               onChange={(e) => setCoordinates(e.target.value)}
             />
           </label>
@@ -44,7 +44,7 @@ const AddPopup = ({ onClose, addRestaurant }) => {
             Ciudad:
             <input
               type="text"
-              value={city}
+              value={ciudad}
               onChange={(e) => setCity(e.target.value)}
             />
           </label>

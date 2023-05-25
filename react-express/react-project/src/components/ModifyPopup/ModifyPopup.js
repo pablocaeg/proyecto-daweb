@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from "react";
 
 const ModifyPopup = ({ restaurant, onClose, modifyRestaurant }) => {
-  const [name, setName] = useState(restaurant.name);
-  const [coordinates, setCoordinates] = useState(restaurant.coordinates);
-  const [city, setCity] = useState(restaurant.postalCode);
+  const [name, setName] = useState(restaurant.resumen.nombre);
+  const [coordinates, setCoordinates] = useState(restaurant.resumen.coordenadas);
+  const [city, setCity] = useState(restaurant.resumen.codigoPostal);
   const [sitios, setSitios] = useState([]);
   const [selectedSitios, setSelectedSitios] = useState([]);
 
@@ -68,7 +68,7 @@ const ModifyPopup = ({ restaurant, onClose, modifyRestaurant }) => {
         <button className="close-btn" onClick={onClose}>
           X
         </button>
-        <h3 className="restaurant-title">Modificando "{restaurant.name}"</h3>
+        <h3 className="restaurant-title">Modificando "{restaurant.resumen.nombre}"</h3>
         <hr className="form-separator"></hr>
         <form className="popup-form" onSubmit={handleUpdateRestauranteSubmit}>
           <label>
