@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ModifyPlatoPopup from "../ModifyPlatoPopup/ModifyPlatoPopup";
 
 const Platos = ({ restaurant, modifyPlato, deletePlato}) => {
+
   restaurant =
     {
       "id": "64665dd8cc4b7b25bbff08bd",

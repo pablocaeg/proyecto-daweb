@@ -1,7 +1,22 @@
 import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
-const InfoRestaurante = ({ restaurant }) => {
+const InfoRestaurante = ({ opinion, restaurant }) => {
+  const [correo, setCorreo] = useState('');
+  const [valoraciones, setValoraciones] = useState([]);
+  const [comentario, setComentario] = useState('');
+  const [calificacion, setCalificacion] = useState(1);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Logic to handle form submission goes here.
+    console.log(correo, comentario, calificacion);
+  };
+
+  const getValoraciones = async (opinion) => {
+    // LLAMADA A LA API PARA OBTENER VALORACIONES
+  };
+
   console.log(restaurant)
   
   restaurant =
@@ -238,6 +253,22 @@ return (
       <h1 className='info-restaurante-label'>Opiniones</h1>
       <h3>Valoración media: <span className="rating-stars">{renderRatingStars(restaurant.calificacionMedia)} </span><span id="rating">({restaurant.calificacionMedia})</span></h3>
       <h4>Número de valoraciones: {restaurant.numValoraciones}</h4>
+      <form onSubmit={handleSubmit} className="valoracion-form">
+      <h2 className='valoracion-restaurante-label'>Añadir valoración</h2>
+        <label>
+          Correo electrónico:
+          <input type="email" value={correo} onChange={(e) => setCorreo(e.target.value)} required />
+        </label>
+        <label>
+          Comentario:
+          <textarea value={comentario} onChange={(e) => setComentario(e.target.value)} required />
+        </label>
+        <label>
+          Calificación:
+          <input type="number" min="1" max="5" value={calificacion} onChange={(e) => setCalificacion(e.target.value)} required />
+        </label>
+        <button type="submit">Enviar</button>
+      </form>
     </div>
   );
 };

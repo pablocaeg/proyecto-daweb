@@ -9,10 +9,15 @@ import Restaurante from './pages/Restaurante/Restaurante.js';
 
 const App = () => {
   const [restaurants, setRestaurants] = useState([]);
+  const [opinion, setOpinion] = useState([]);
   const [restaurant, setRestaurant] = useState([]);
   const [loading, setLoading] = useState(false);
   
-
+  const getOpinion = async (idrestaurante) => {
+    // Se obtiene la opinion a partir de idrestaurante.
+    // Si la opinion de idrestaurante no existe, se crea una nueva opinion para este restaurante.
+  };
+  
   const getRestaurants = async () => {
     try {
       const response = await fetch('http://localhost:8090/restaurantes');
@@ -133,7 +138,7 @@ const deleteRestaurant = async (restaurant) => {
             element={
               loading 
                 ? <p>Loading...</p> 
-                : <Restaurante modifyPlato={modifyPlato} deletePlato={deletePlato} restaurant={restaurant} />
+                : <Restaurante modifyPlato={modifyPlato} deletePlato={deletePlato} opinion={opinion} restaurant={restaurant} />
             } 
           />        
           </Routes>
