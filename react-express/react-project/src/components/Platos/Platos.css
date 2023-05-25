@@ -39,4 +39,33 @@
     font-weight: bold;
     color: #000;
   }
+
+  .plato-button-container {
+    margin-top: 10px;
+    position: relative;
+    padding-right: 10px;
+  }
+  
+  .plato-delete-button,
+  .plato-modify-button {
+    background-color: #fd6c01;
+    color: white;
+    margin: 0 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    outline: none;
+  }
+
+  .plato-delete-button {
+    background-color: #e02720fb;
+  }
+  
+  .plato-modify-button:hover {
+    background-color: #b84f03;
+  }
+
+  .plato-delete-button:hover {
+    background-color: #b40600;
+  }
   

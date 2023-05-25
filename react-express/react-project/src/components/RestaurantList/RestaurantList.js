@@ -79,17 +79,18 @@ const RestaurantList = ({
     setCurrentPage((prevPage) => prevPage + direction);
   };
 
+  const openModifyPopup = (restaurant) => {
+    setCurrentRestaurant(restaurant);
+    setShowPopup(true);
+  };
+
+  const closeModifyPopup = () => {
+    setCurrentRestaurant(false);
+    setShowPopup(false);
+  };
+
   return (
     <div className="restaurant-list">
-      {showPopup && currentRestaurant && (
-        <ModifyPopup
-          addPlato={addPlato}
-          modifyRestaurant={modifyRestaurant}
-          deleteRestaurant={deleteRestaurant}
-          restaurant={currentRestaurant}
-          onClose={() => setShowPopup(false)}
-        />
-      )}
       {displayedRestaurants.map((restaurant) => (
         <Link
           key={restaurant.resumen.id}
@@ -111,8 +112,7 @@ const RestaurantList = ({
                 onClick={(event) => {
                   event.preventDefault();
                   event.stopPropagation();
-                  setShowPopup(true);
-                  setCurrentRestaurant(restaurant);
+                  openModifyPopup(restaurant)
                 }}
               >
                 Modificar
@@ -154,6 +154,15 @@ const RestaurantList = ({
           <h3>{totalPages}</h3>
         </div>
       </div>
+      {showPopup && currentRestaurant && (
+        <ModifyPopup
+          addPlato={addPlato}
+          modifyRestaurant={modifyRestaurant}
+          deleteRestaurant={deleteRestaurant}
+          restaurant={currentRestaurant}
+          onClose={closeModifyPopup}
+        />
+      )}
     </div>
   );
 };

@@ -97,11 +97,23 @@ const deleteRestaurant = async (restaurant) => {
     }
 };
 
+  
+  const deletePlato = async (restaurant) => {
+
+    await getRestaurants();
+  };
+
+    
+  const modifyPlato = async (restaurant) => {
+
+
+    await getRestaurants();
+  };
 
   
   const addPlato = async (restaurant) => {
-    // your fetch code for POST method to add the restaurant
-    // After adding the restaurant, call getRestaurants to update the state
+
+
     await getRestaurants();
   };
 
@@ -121,9 +133,10 @@ const deleteRestaurant = async (restaurant) => {
             element={
               loading 
                 ? <p>Loading...</p> 
-                : <Restaurante restaurant={restaurant} />
+                : <Restaurante modifyPlato={modifyPlato} deletePlato={deletePlato} restaurant={restaurant} />
             } 
-          />        </Routes>
+          />        
+          </Routes>
       </main>
       <Footer />
     </>
