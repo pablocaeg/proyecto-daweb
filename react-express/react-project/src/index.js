@@ -7,7 +7,7 @@ import './components/Footer/Footer.css'
 import './components/RestaurantList/RestaurantList.css'
 import './components/InfoRestaurante/InfoRestaurante.css'
 import './components/Platos/Platos.css'
-
+import './components/ModifyPlatoPopup/ModifyPlatoPopup.css'
 import './components/Header/Header.css'
 import './components/Filters/Filters.css'
 import './components/SearchBar/SearchBar.css'

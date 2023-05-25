@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
         console.error(err);
         res.status(500).json({ error: 'error obteniendo el token' });
       }
-    } else {
+    }  
       try {
         const { data } = await axios.get('http://localhost:8090/restaurantes');
         res.json(data);
@@ -26,8 +26,6 @@ router.get('/', async (req, res) => {
         console.error(err);
         res.status(500).json({ error: 'error obteniendo los restaurantes' });
       }
-    }
-
 });
 
 // GET Restaurante por id

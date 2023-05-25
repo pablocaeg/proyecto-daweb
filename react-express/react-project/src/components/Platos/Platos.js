@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from "react";
+import ModifyPlatoPopup from "../ModifyPlatoPopup/ModifyPlatoPopup";
 
-const Platos = ({ restaurant }) => {
+const Platos = ({ restaurant, modifyPlato, deletePlato}) => {
   restaurant =
     {
       "id": "64665dd8cc4b7b25bbff08bd",
@@ -119,17 +120,49 @@ const Platos = ({ restaurant }) => {
       "numValoraciones": 0,
       "calificacionMedia": 0
     }
-  return (
-    <div className="platos-container">
-      {restaurant.platos.map((plato, index) => (
-        <div className="plato-item" key={index}>
-          <h2>{plato.nombre}</h2>
-          <p>{plato.descripcion}</p>
-          <p>Precio: {plato.precio}€</p>
-        </div>
-      ))}
-    </div>
-  );
-};
+    const [showModifyPopup, setShowModifyPopup] = useState(false);
+    const [selectedPlato, setSelectedPlato] = useState(null);
+  
+    const openModifyPopup = (plato) => {
+      setSelectedPlato(plato);
+      setShowModifyPopup(true);
+    };
+  
+    const closeModifyPopup = () => {
+      setSelectedPlato(null);
+      setShowModifyPopup(false);
+    };
+    
+    return (
+      <div className="platos-container">
+        {restaurant.platos.map((plato, index) => (
+          <div className="plato-item" key={index}>
+            <h2>{plato.nombre}</h2>
+            <p>{plato.descripcion}</p>
+            <p>Precio: {plato.precio}€</p>
+            <div className="plato-button-container">
+              <button 
+                className="plato-modify-button"
+                onClick={() => openModifyPopup(plato)}>
+                Modificar
+              </button>
+              <button 
+                className="plato-delete-button"
+                onClick={() => deletePlato(restaurant.id)}>
+                Borrar
+              </button>
+            </div>
+          </div>
+        ))}
+        {showModifyPopup && selectedPlato && (
+        <ModifyPlatoPopup 
+          plato={selectedPlato} 
+          onClose={closeModifyPopup} 
+          modifyPlato={(plato) => { /* Call your API to modify the plato here */ }}
+        />
+      )}
+      </div>
+    );
+  };
 
 export default Platos;

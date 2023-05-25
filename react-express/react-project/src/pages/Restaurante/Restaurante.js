@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import InfoRestaurante from "../../components/InfoRestaurante/InfoRestaurante.js";
 import Platos from "../../components/Platos/Platos.js";
 
-const Restaurante = ({ restaurant }) => {
+const Restaurante = ({ restaurant, modifyPlato, deletePlato}) => {
   const [displayedComponent, setDisplayedComponent] = useState("info");
 
   if (!restaurant) {
@@ -46,7 +46,7 @@ const Restaurante = ({ restaurant }) => {
 
       {displayedComponent === "info" ? (
         <InfoRestaurante restaurant={restaurant} />      ) : (
-        <Platos  restaurant={restaurant} />
+        <Platos modifyPlato={modifyPlato} deletePlato={deletePlato} restaurant={restaurant} />
       )}
     </div>
   );

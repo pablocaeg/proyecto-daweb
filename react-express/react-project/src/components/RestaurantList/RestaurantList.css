@@ -64,21 +64,14 @@
   padding: 0 3px;
 }
 
-.restaurant-button-container {
-  position: absolute;
-  top: 120px;
-  right: 10px;
-}
-
-.delete-button,
-.modify-button {
-  margin: 0 5px;
+.plato-delete-button,
+.plato-modify-button {
+  margin: 0 10px;
   padding: 5px 10px;
   border: 1px solid #fd6c01;
   background-color: #fd6c01;
   color: white;
   cursor: pointer;
-  border-radius: 3px;
   outline: none;
   font-size: 14px;
 }
