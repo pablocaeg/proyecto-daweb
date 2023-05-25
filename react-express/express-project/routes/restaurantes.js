@@ -1,33 +1,78 @@
 const express = require('express');
 const axios = require('axios');
 const router = express.Router();
-
-//GET restaurantes y guarda el token en una cookie segura
+/*
 router.get('/', async (req, res) => {    
-    if (!req.cookies || !req.cookies.jwt) {
-      try {
+  try {
+    // Verifica si el token existe
+    if (!req.cookies || !req.cookies.jwt) {   
         const { data } = await axios.get('http://localhost:8090/restaurantes');
         if (data && data.token) {
           // Guarda el token en una cookie segura
-          res.cookie('jwt', data.token, { httpOnly: true});  
-          res.send('Token recibido y almacenado en una cookie segura');
+          res.cookie('jwt', data.token, { httpOnly: true});
+          console.log('Cookie jwt: ', req.cookies.jwt);
+          try {
+            // Utiliza el token directamente en la segunda llamada get
+            const { data } = await axios.get('http://localhost:8090/restaurantes');
+            return res.json(data);
+          } catch (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'error obteniendo los restaurantes' });
+          } 
         } else {
-          res.send('No se encontró el token');
-        }
-      } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'error obteniendo el token' });
-      }
-    } else {
-      try {
-        const { data } = await axios.get('http://localhost:8090/restaurantes');
-        res.json(data);
-      } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'error obteniendo los restaurantes' });
-      }
+          return res.send('No se encontró el token');
+        } 
+    }else{
+      console.log('Cookie jwt: ', req.cookies.jwt);
+      const { data } = await axios.get('http://localhost:8090/restaurantes');
+      return res.json(data);
     }
+    
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: 'error obteniendo los restaurantes' });
+  }
+});
 
+*/
+/*
+router.get('/', async (req, res) => {    
+  try {
+    let response = await axios.get('http://localhost:8080/api/restaurantes');
+    //let response = await axios.get('http://localhost:8090/restaurantes');
+    // Verificar el tipo de respuesta
+    const contentType = response.headers['content-type'];
+    console.log('Content-Type: ', contentType);
+
+    if (contentType.includes('application/json')) {
+      console.log('La respuesta es JSON');
+      if (response.data && response.data.token) {
+        console.log('Token: ', response.data.token);
+        // Si la respuesta contiene un token, lo guarda en una cookie y realiza otra llamada GET
+        res.cookie('jwt', response.data.token, { httpOnly: true });
+        response = await axios.get('http://localhost:8090/restaurantes');
+      }
+      console.log('Cookie jwt: ', req.cookies.jwt);
+      console.log('Response: ', response.data);
+      res.json(response.data);
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Error obteniendo los restaurantes' });
+  }
+});
+
+*/
+router.get('/', async (req, res) => {    
+  try {
+    let response = await axios.get('http://localhost:8080/api/restaurantes', { withCredentials: true });
+    console.log('Cookie jwt: ', req.cookies.jwt);
+    console.log('Response: ', response.data);
+    res.json(response.data);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Error obteniendo los restaurantes' });
+  }
 });
 
 // GET Restaurante por id

@@ -15,7 +15,7 @@ const App = () => {
 
   const getRestaurants = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/restaurantes');
+      const response = await fetch('http://localhost:8090/restaurantes');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
