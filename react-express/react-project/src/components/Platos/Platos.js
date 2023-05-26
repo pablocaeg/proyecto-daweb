@@ -159,7 +159,7 @@ const Platos = ({ restaurant, modifyPlato, deletePlato}) => {
         <ModifyPlatoPopup 
           plato={selectedPlato} 
           onClose={closeModifyPopup} 
-          modifyPlato={(plato) => { /* Call your API to modify the plato here */ }}
+          modifyPlato={modifyPlato}
         />
       )}
       </div>

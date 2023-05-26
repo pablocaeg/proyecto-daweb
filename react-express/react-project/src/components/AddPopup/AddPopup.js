@@ -7,8 +7,7 @@ const AddPopup = ({ onClose, addRestaurant }) => {
 
   const handleAddRestauranteSubmit = (e) => {
     e.preventDefault();
-    // VALORES QUE SE LE PASAN AL POST ADDRESTAURANT.
-    addRestaurant({ nombre, coordenadas });
+    //addRestaurant({ nombre, coordenadas });
     setName("");
     setCoordinates("");
     setCity("");

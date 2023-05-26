@@ -1,20 +1,15 @@
 import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
-const InfoRestaurante = ({ opinion, restaurant }) => {
+const InfoRestaurante = ({ addValoracion, valoraciones, restaurant }) => {
   const [correo, setCorreo] = useState('');
-  const [valoraciones, setValoraciones] = useState([]);
   const [comentario, setComentario] = useState('');
   const [calificacion, setCalificacion] = useState(1);
 
-  const handleSubmit = (e) => {
+  const handleAddValoracionSubmit = (e) => {
     e.preventDefault();
-    // Logic to handle form submission goes here.
+    // addValoracion()
     console.log(correo, comentario, calificacion);
-  };
-
-  const getValoraciones = async (opinion) => {
-    // LLAMADA A LA API PARA OBTENER VALORACIONES
   };
 
   console.log(restaurant)
@@ -253,7 +248,7 @@ return (
       <h1 className='info-restaurante-label'>Opiniones</h1>
       <h3>Valoración media: <span className="rating-stars">{renderRatingStars(restaurant.calificacionMedia)} </span><span id="rating">({restaurant.calificacionMedia})</span></h3>
       <h4>Número de valoraciones: {restaurant.numValoraciones}</h4>
-      <form onSubmit={handleSubmit} className="valoracion-form">
+      <form onSubmit={handleAddValoracionSubmit} className="valoracion-form">
       <h2 className='valoracion-restaurante-label'>Añadir valoración</h2>
         <label>
           Correo electrónico:

@@ -1,7 +1,7 @@
 // ModifyPopup.js
 import React, { useState, useEffect } from "react";
 
-const ModifyPopup = ({ restaurant, onClose, modifyRestaurant }) => {
+const ModifyPopup = ({ restaurant, onClose, modifyRestaurant, addPlato }) => {
   const [name, setName] = useState(restaurant.resumen.nombre);
   const [coordinates, setCoordinates] = useState(restaurant.resumen.coordenadas);
   const [city, setCity] = useState(restaurant.resumen.codigoPostal);
@@ -52,13 +52,13 @@ const ModifyPopup = ({ restaurant, onClose, modifyRestaurant }) => {
 
   const handlePlatoSubmit = (e) => {
     e.preventDefault();
-    //? PETICION POST ADDPLATO A LA API
+    //addPlato()
     console.log({ nombre, descripcion, precio, disponibilidad });
   };
 
   const handleUpdateRestauranteSubmit = (e) => {
     e.preventDefault();
-    // PETICION PUT UPDATERESTAURANT A LA API
+    //modifyRestaurant()
     console.log({ name, coordinates, city, selectedSitios });
   };
 

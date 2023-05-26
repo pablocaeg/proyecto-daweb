@@ -3,14 +3,14 @@ import { Link } from "react-router-dom"
 import AddPopup from "../AddPopup/AddPopup.js"
 
 const Header = ({ addRestaurant }) => {
-  const [showAddPopup, setShowAddPopup] = useState(false);  // State to control the AddPopup
+  const [showAddPopup, setShowAddPopup] = useState(false);
 
   const handleAddRestaurant = () => {
-    setShowAddPopup(true);  // Set the state to true when the button is clicked
+    setShowAddPopup(true);
   };
 
   const handleClose = () => {
-    setShowAddPopup(false);  // Close the popup
+    setShowAddPopup(false);
   };
   
   return (
