@@ -9,7 +9,7 @@ const ModifyPlatoPopup = ({ plato, onClose, modifyPlato }) => {
 
   const handlePlatoSubmit = (e) => {
     e.preventDefault();
-    //? PETICION PUT MODIFYPLATO A LA API
+    //modifyPlato()
     console.log({ nombre, descripcion, precio, disponibilidad });
   };
 

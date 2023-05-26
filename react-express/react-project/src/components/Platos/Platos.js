@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ModifyPlatoPopup from "../ModifyPlatoPopup/ModifyPlatoPopup";
 
 const Platos = ({ restaurant, modifyPlato, deletePlato}) => {
+
   restaurant =
     {
       "id": "64665dd8cc4b7b25bbff08bd",
@@ -158,7 +159,7 @@ const Platos = ({ restaurant, modifyPlato, deletePlato}) => {
         <ModifyPlatoPopup 
           plato={selectedPlato} 
           onClose={closeModifyPopup} 
-          modifyPlato={(plato) => { /* Call your API to modify the plato here */ }}
+          modifyPlato={modifyPlato}
         />
       )}
       </div>

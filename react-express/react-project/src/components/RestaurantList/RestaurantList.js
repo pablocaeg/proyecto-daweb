@@ -7,7 +7,7 @@ const toRadians = (degrees) => {
 };
 
 const borrarRestaurante = (idrestaurante) => {
-  // LLAMADA POST DELETERESTAURANTE A LA API
+  //deleteRestaurant()
 };
 
 const getDistance = (lat1, lon1, lat2, lon2) => {
@@ -38,6 +38,8 @@ const RestaurantList = ({
   deleteRestaurant,
   addPlato,
   getRestaurant,
+  getSitiosProximos,
+  loadingSitiosProximos
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showPopup, setShowPopup] = useState(false);
@@ -110,6 +112,7 @@ const RestaurantList = ({
               <button
                 className="modify-button"
                 onClick={(event) => {
+                  getSitiosProximos(restaurant.resumen.id)
                   event.preventDefault();
                   event.stopPropagation();
                   openModifyPopup(restaurant)
@@ -155,10 +158,11 @@ const RestaurantList = ({
         </div>
       </div>
       {showPopup && currentRestaurant && (
-        <ModifyPopup
+        loadingSitiosProximos
+          ? <p>Loading...</p> 
+          : <ModifyPopup
           addPlato={addPlato}
           modifyRestaurant={modifyRestaurant}
-          deleteRestaurant={deleteRestaurant}
           restaurant={currentRestaurant}
           onClose={closeModifyPopup}
         />

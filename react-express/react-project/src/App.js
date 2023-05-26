@@ -9,6 +9,7 @@ import Restaurante from './pages/Restaurante/Restaurante.js';
 
 const App = () => {
   const [restaurants, setRestaurants] = useState([]);
+  const [valoraciones, setValoraciones] = useState([]);
   const [restaurant, setRestaurant] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -32,6 +33,20 @@ const App = () => {
     }
   }
   
+  const [loadingRestaurant, setLoadingRestaurant] = useState(false);
+  const [loadingSitiosProximos, setLoadingSitiosProximos] = useState(false);
+
+  // IMPORTANTE
+  // EL GET VALORACIONES SE HARÁ DENTRO DEL GETRESTAURANT. PRIMERO SE COMPRUEBA SI EXISTE OPINION PARA ESE RESTAURANTE, SI NO EXISTE SE CREA, SI EXISTE SE ASIGNA EL SETVALORACIONES.
+
+  const getSitiosProximos = async (idrestaurante) => {
+    // ADD GET SITIOS PROXIMOS GET REQUEST
+    // EN ESTA FUNCION SE MODIFICA LA FUNCION LOADINGSITIOSPROXIMOS.
+  };
+
+  const addValoracion = async (idopinion) => {
+    // ADD VALORACION POST REQUEST
+  };
 
   const getRestaurants = async () => {
     try {
@@ -57,8 +72,8 @@ const App = () => {
   
   const getRestaurant = async (idrestaurante) => {
     try {
-      setLoading(true);
-      const response = await fetch(`http://localhost:8080/api/restaurantes/${idrestaurante}`);
+      setLoadingRestaurant(true);
+      const response = await fetch(`http://localhost:3000/api/restaurantes/${idrestaurante}`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -66,7 +81,7 @@ const App = () => {
       const data = await response.json();
       console.log(data)
       setRestaurant(data)
-      setLoading(false);
+      setLoadingRestaurant(false);
     } catch (error) {
       console.error('Error fetching restaurants data:', error);
     }
@@ -154,13 +169,13 @@ const deleteRestaurant = async (restaurant) => {
       <main>
         <Routes>
           <Route path="/contact" element={<Contact />} />
-          <Route path="/" element={<Landing getRestaurant={getRestaurant} addPlato={addPlato} modifyRestaurant={modifyRestaurant} deleteRestaurant={deleteRestaurant} restaurants={restaurants} />} />
+          <Route path="/" element={<Landing getSitiosProximos={getSitiosProximos} loadingSitiosProximos={loadingSitiosProximos} getRestaurant={getRestaurant} addPlato={addPlato} modifyRestaurant={modifyRestaurant} deleteRestaurant={deleteRestaurant} restaurants={restaurants} />} />
           <Route 
             path="/restaurante/:id" 
             element={
-              loading 
+              loadingRestaurant 
                 ? <p>Loading...</p> 
-                : <Restaurante modifyPlato={modifyPlato} deletePlato={deletePlato} restaurant={restaurant} />
+                : <Restaurante modifyPlato={modifyPlato} deletePlato={deletePlato} addValoracion={addValoracion} valoraciones={valoraciones} restaurant={restaurant} />
             } 
           />        
           </Routes>
