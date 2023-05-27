@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    {{> header }}
+      <div class="container features">
+        <h1>{{tittle}}</h1>
+
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Incidencia</th>
+                    <th scope="col">Mail</th>
+                    <th scope="col">Mensaje</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each contactos}}
+                <tr>
+                    <th scope="row">{{incidencia}}</th>
+                    <td>{{mail}}</td>
+                    <td>{{mensaje}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+     </div>
+    {{> footer }}
+  </body>
+</html>

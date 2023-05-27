@@ -3,6 +3,149 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+/*******************header***********************/
+header {
+  display: flex;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  align-items: center; /* add this line to vertically center the items */
 }
+
+#app-logo {
+  max-width: 90px;
+  margin-bottom: 0px;
+  margin-left: 5rem;
+}
+
+#app-title {
+  margin-top: 0px;
+  margin-left: 10px;
+  margin-bottom: 2.5px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fd6c01;
+  text-decoration: none;
+}
+
+.navbar {
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+}
+
+.navbar-nav {
+  display: flex;
+}
+
+.nav-link {
+  font-size: 1rem;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  position: relative;
+  background-color: transparent;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 8px;
+}
+
+.nav-link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+
+li{
+  list-style: none;
+}
+
+#app-slogan {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+/****************footer**********/
+
+/* Footer styles */
+footer {
+  margin-top: 40px;
+    background-color: #fd6c01;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .footer-info,
+  .footer-social,
+  .footer-legal {
+    margin-bottom: 1rem;
+  }
+  
+  .footer-info h3,
+  .footer-social h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-social ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .footer-social li {
+    cursor: pointer;
+  }
+  
+  .footer-legal p {
+    margin: 0.5rem 0;
+  }
+  
+  .footer-legal a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .footer-legal a:hover {
+    text-decoration: underline;
+  }
+  
+  .test {
+    padding: 200px;
+  }
+  
+  /*Formulario incidencias*/
+  form {
+    padding: 1rem;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .form-control {
+    border: 1px solid #fd6c01;
+    font-size: 1.2rem;
+  }
+
+  .form-control:focus {
+    border-color: #fd6c01;
+    box-shadow: 0 0 0 0.2rem rgba(253, 108, 1, 0.25);
+  }
+
+  .btn-primary {
+    background-color: #fd6c01;
+    border-color: #fd6c01;
+  }
+
+  .btn-primary:hover,
+  .btn-primary:focus,
+  .btn-primary:active {
+    background-color: #e26003;
+    border-color: #e26003;
+  }

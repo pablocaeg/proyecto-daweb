@@ -37,23 +37,25 @@ const App = () => {
   const [loadingSitiosProximos, setLoadingSitiosProximos] = useState(false);
 
   // IMPORTANTE
-  // EL GET VALORACIONES SE HARÁ DENTRO DEL GETRESTAURANT. PRIMERO SE COMPRUEBA SI EXISTE OPINION PARA ESE RESTAURANTE, SI NO EXISTE SE CREA, SI EXISTE SE ASIGNA EL SETVALORACIONES.
+  //! EL GET VALORACIONES SE HARÁ DENTRO DEL GETRESTAURANT. PRIMERO SE COMPRUEBA SI EXISTE OPINION PARA ESE RESTAURANTE, SI NO EXISTE SE CREA, SI EXISTE SE ASIGNA EL SETVALORACIONES.
 
   const getSitiosProximos = async (idrestaurante) => {
-    // ADD GET SITIOS PROXIMOS GET REQUEST
+    //? ADD GET SITIOS PROXIMOS GET REQUEST
     // EN ESTA FUNCION SE MODIFICA LA FUNCION LOADINGSITIOSPROXIMOS.
   };
 
   const addValoracion = async (idopinion) => {
-    // ADD VALORACION POST REQUEST
+    //? ADD VALORACION POST REQUEST
   };
 
-  const getRestaurants = async () => {
+// En nuestra lógica del backend para poder usar la plataforma tienes que estar loggeado, independientemente de se eres o no gestor
+// Lo que te permitiriría crear restaurantes y modificarlos si eres su gestor
+const getRestaurants = async () => {
     try {
       const jwt = getCookie('jwt');
       console.log('Cookie jwt: ', jwt);
       if(!jwt) {
-        window.location.href = 'http://localhost:8090/restaurantes';
+        window.location.href = 'http://localhost:8090/oauth2/authorization/github';
       }else{
         const response = await fetch('http://localhost:8090/restaurantes');
         if (!response.ok) {
@@ -72,16 +74,22 @@ const App = () => {
   
   const getRestaurant = async (idrestaurante) => {
     try {
-      setLoadingRestaurant(true);
-      const response = await fetch(`http://localhost:3000/api/restaurantes/${idrestaurante}`);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+      const jwt = getCookie('jwt');
+      console.log('Cookie jwt: ', jwt);
+      if(!jwt) {
+        window.location.href = 'http://localhost:8090/oauth2/authorization/github';
+      }else{
+        setLoadingRestaurant(true);
+        const response = await fetch(`http://localhost:8090/restaurantes/${idrestaurante}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+      
+        const data = await response.json();
+        console.log(data)
+        setRestaurant(data)
+        setLoadingRestaurant(false);
       }
-    
-      const data = await response.json();
-      console.log(data)
-      setRestaurant(data)
-      setLoadingRestaurant(false);
     } catch (error) {
       console.error('Error fetching restaurants data:', error);
     }
@@ -89,19 +97,26 @@ const App = () => {
 
   const addRestaurant = async (restaurant) => {
     try {
-        const response = await fetch('http://localhost:3000/api/restaurantes', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            // El body de la petición es el restaurante que se quiere añadir
-            body: JSON.stringify(restaurant)
-        });
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        // Al modificar el restaurante, se vuelve a hacer la petición para obtener los restaurantes actualizados
-        await getRestaurants();
+      const jwt = getCookie('jwt');
+      console.log('Cookie jwt: ', jwt);
+      if(!jwt) {
+        window.location.href = 'http://localhost:8090/oauth2/authorization/github';
+      }else{
+          const response = await fetch('http://localhost:8090/restaurantes', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': 'Bearer ' + jwt
+              },
+              // El body de la petición es el restaurante que se quiere añadir
+              body: JSON.stringify(restaurant)
+          });
+          if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          // Al modificar el restaurante, se vuelve a hacer la petición para obtener los restaurantes actualizados
+          await getRestaurants();
+      }
     } catch (error) {
         console.error('Error adding restaurant:', error);
     }
@@ -109,17 +124,24 @@ const App = () => {
 
 const modifyRestaurant = async (restaurant) => {
     try {
-        const response = await fetch(`http://localhost:3000/api/restaurantes/${restaurant.id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(restaurant)
-        });
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+      const jwt = getCookie('jwt');
+      console.log('Cookie jwt: ', jwt);
+      if(!jwt) {
+        window.location.href = 'http://localhost:8090/oauth2/authorization/github';
+      }else{
+          const response = await fetch(`http://localhost:8090/restaurantes/${restaurant.id}`, {
+              method: 'PUT',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': 'Bearer ' + jwt
+              },
+              body: JSON.stringify(restaurant)
+          });
+          if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          await getRestaurants();
         }
-        await getRestaurants();
     } catch (error) {
         console.error('Error modifying restaurant:', error);
     }
@@ -127,13 +149,20 @@ const modifyRestaurant = async (restaurant) => {
 
 const deleteRestaurant = async (restaurant) => {
     try {
-        const response = await fetch(`http://localhost:3000/api/restaurantes/${restaurant.id}`, {
-            method: 'DELETE'
-        });
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+      const jwt = getCookie('jwt');
+      console.log('Cookie jwt: ', jwt);
+      if(!jwt) {
+        window.location.href = 'http://localhost:8090/oauth2/authorization/github';
+      }else{
+          const response = await fetch(`http://localhost:8090/restaurantes/${restaurant.id}`, {
+              method: 'DELETE',
+              headers: { 'Authorization': 'Bearer ' + jwt }
+          });
+          if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          await getRestaurants();
         }
-        await getRestaurants();
     } catch (error) {
         console.error('Error deleting restaurant:', error);
     }
