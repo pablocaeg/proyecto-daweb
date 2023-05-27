@@ -11,7 +11,6 @@ const App = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [valoraciones, setValoraciones] = useState([]);
   const [restaurant, setRestaurant] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   function getCookie(name) {
     // Inicialmente, se toma la cadena de cookies completa de document.cookie y se le añade un ; al principio.
