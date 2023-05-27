@@ -30,7 +30,7 @@ const InfoRestaurante = ({ addValoracion, valoraciones, restaurant }) => {
       },
     ],
   };
-
+  /*
   restaurant = {
     id: "64665dd8cc4b7b25bbff08bd",
     nombre: "Test3",
@@ -151,7 +151,7 @@ const InfoRestaurante = ({ addValoracion, valoraciones, restaurant }) => {
     ],
     numValoraciones: 0,
     calificacionMedia: 0,
-  };
+  };*/
   const [lat, lon] = restaurant.coordenadas.split(",").map(Number);
 
   const [carouselIndex, setCarouselIndex] = useState(0);
@@ -169,11 +169,7 @@ const InfoRestaurante = ({ addValoracion, valoraciones, restaurant }) => {
         restaurant.sitios[0].imagenes.length
     );
   };
-
-  if (!restaurant.sitios || restaurant.sitios.length === 0) {
-    return <p>No se han definido sitios para este restaurante.</p>;
-  }
-
+  
   const renderRatingStars = (rating) => {
     const maxRating = 5;
     const stars = [];

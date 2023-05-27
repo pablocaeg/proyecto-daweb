@@ -12,9 +12,8 @@
   margin: 15px;
   padding:  10px 20px;
   width: 300px;
-  height: 110px;
   position: relative;
-  padding-bottom: 45px;
+  padding-bottom: 15px;
 }
 
 .restaurant-name {
@@ -64,28 +63,28 @@
   padding: 0 3px;
 }
 
-.plato-delete-button,
-.plato-modify-button {
-  margin: 0 10px;
-  padding: 5px 10px;
-  border: 1px solid #fd6c01;
+
+.delete-button,
+.modify-button {
   background-color: #fd6c01;
   color: white;
+  margin: 0 5px;
+  padding: 10px 20px;
   cursor: pointer;
+  border-radius: 3px;
   outline: none;
-  font-size: 14px;
+  border: none;
+  margin-top: 30px;
 }
 
 .delete-button {
   background-color: #e02720fb;
 }
 
-.delete-button:hover {
-  background-color: #b40600;
-}
-
-
 .modify-button:hover {
   background-color: #b84f03;
 }
 
+.delete-button:hover {
+  background-color: #b40600;
+}

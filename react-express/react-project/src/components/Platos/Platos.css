@@ -55,6 +55,7 @@
     cursor: pointer;
     border-radius: 3px;
     outline: none;
+    border: none;
   }
 
   .plato-delete-button {
