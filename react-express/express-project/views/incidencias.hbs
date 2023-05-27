@@ -12,21 +12,21 @@
         <table class="table">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col">Incidencia</th>
+                    <th  scope="col">Incidencia</th>
                     <th scope="col">Mail</th>
                     <th scope="col">Mensaje</th>
                 </tr>
             </thead>
             <tbody>
-                {{#each contactos}}
-                <tr>
-                    <th scope="row">{{incidencia}}</th>
-                    <td>{{mail}}</td>
-                    <td>{{mensaje}}</td>
-                </tr>
-                {{/each}}
+              {{#each incidencias}}
+              <tr>
+                <th data-label="Incidencia">{{incidencia}}</th>
+                <td data-label="Mail">{{mail}}</td>
+                <td data-label="Mensaje">{{mensaje}}</td>
+              </tr>
+              {{/each}}
             </tbody>
-        </table>
+            </table>
      </div>
     {{> footer }}
   </body>
