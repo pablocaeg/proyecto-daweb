@@ -31,6 +31,8 @@ async function getAllIncidencias(connection) {
   try {
     const results = await connection.execute('SELECT * FROM `Incidencias`');
     rows = results[0];
+    resultado =  JSON.stringify(rows, null, 2);
+    console.log("Incidencias recuperadas: " + resultado);
   } catch (error) {
     console.error('Error devolviendo las incidencias:', error);
     throw error;

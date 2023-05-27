@@ -2,6 +2,30 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+.body-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.container-respuesta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  padding: 2rem;
+  margin: 100px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#respuesta {
+  color: rgb(0, 0, 0);
+  font-size: xx-large;
+}
 
 /*******************header***********************/
 header {
@@ -148,4 +172,56 @@ footer {
   .btn-primary:active {
     background-color: #e26003;
     border-color: #e26003;
+  }
+
+  /**********Incidencias tabla**********/
+  
+.container.features {
+  margin-top: 30px;
+}
+  .table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+  }
+  
+  .thead-light tr {
+    background-color: #f8f9fa;
+  }
+  td{
+    text-align: center;
+  }
+  .table th,
+  .table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+  }
+  
+
+  
+  /* Esto es para hacer la tabla responsive */
+  @media screen and (max-width: 600px) {
+    .table thead {
+      display: none;
+    }
+  
+    .table tr {
+      margin-bottom: 10px;
+      display: block;
+    }
+  
+    .table td {
+      display: block;
+      text-align: center;
+      border: none;
+    }
+  
+    .table td::before {
+      content: attr(data-label);
+      float: left;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
   }

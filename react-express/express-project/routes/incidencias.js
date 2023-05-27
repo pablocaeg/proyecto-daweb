@@ -11,9 +11,9 @@ router.post('/register', async function(req, res, next) {
     const result = await helper_mysql.registerIncidencia(con, incidencia, mail, message);
     
     if (result[0].affectedRows > 0) {
-      res.send('Incidencia registrada');
+      res.render('incidencia_registrada', { 'title' : 'Respuesta registro incidencia', 'message' : 'Incidencia registrada' });
     } else {
-      res.send('Error al registrar la incidencia');
+      res.render('incidencia_registrada', { 'title' : 'Respuesta registro incidencia', 'message' : 'Error al registrar la incidencia' });
     }
     
   } catch (error) {
@@ -30,9 +30,11 @@ router.post('/register', async function(req, res, next) {
 router.get('/all', async function(req, res, next) {
   let con;
   try {
+    console.log('Establecemos conexion');
     con = await helper_mysql.getConnection();
+    console.log('Recuperamos incidencias');
     const data = await helper_mysql.getAllIncidencias(con);
-
+    console.log("Incidencias recuperadas: " + data)
     res.render('incidencias', { 'title' : 'Lista de incidencias', 'incidencias' : data });
 
   } catch (error) {
