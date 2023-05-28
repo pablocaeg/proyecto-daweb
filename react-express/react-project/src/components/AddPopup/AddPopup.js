@@ -7,7 +7,7 @@ const AddPopup = ({ onClose, addRestaurant }) => {
 
   const handleAddRestauranteSubmit = (e) => {
     e.preventDefault();
-    addRestaurant({ nombre, coordenadas, ciudad });
+    addRestaurant(nombre, coordenadas, ciudad );
     setName("");
     setCoordinates("");
     setCity("");
