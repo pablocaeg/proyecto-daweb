@@ -1,7 +1,7 @@
 // ModifyPlatoPopup.js
 import React, { useState } from "react";
 
-const ModifyPlatoPopup = ({ plato, onClose, modifyPlato }) => {
+const ModifyPlatoPopup = ({plato, onClose, modifyPlato, restaurant}) => {
   const [nombre, setNombre] = useState(plato.nombre);
   const [descripcion, setDescripcion] = useState(plato.descripcion);
   const [precio, setPrecio] = useState(plato.precio);
@@ -9,8 +9,9 @@ const ModifyPlatoPopup = ({ plato, onClose, modifyPlato }) => {
 
   const handlePlatoSubmit = (e) => {
     e.preventDefault();
-    //modifyPlato()
+    modifyPlato(nombre, descripcion, precio, restaurant.id)
     console.log({ nombre, descripcion, precio, disponibilidad });
+
   };
 
   return (

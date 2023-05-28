@@ -149,7 +149,7 @@ const Platos = ({ restaurant, modifyPlato, deletePlato}) => {
               </button>
               <button 
                 className="plato-delete-button"
-                onClick={() => deletePlato(restaurant.id)}>
+                onClick={() => deletePlato(restaurant.id,plato.nombre)}>
                 Borrar
               </button>
             </div>
@@ -160,6 +160,7 @@ const Platos = ({ restaurant, modifyPlato, deletePlato}) => {
           plato={selectedPlato} 
           onClose={closeModifyPopup} 
           modifyPlato={modifyPlato}
+          restaurant={restaurant}
         />
       )}
       </div>
