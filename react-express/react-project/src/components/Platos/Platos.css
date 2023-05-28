@@ -46,6 +46,7 @@
     padding-right: 10px;
   }
   
+  .plato-incidencia-button,
   .plato-delete-button,
   .plato-modify-button {
     background-color: #fd6c01;
@@ -62,6 +63,7 @@
     background-color: #e02720fb;
   }
   
+  .plato-incidencia-button:hover,
   .plato-modify-button:hover {
     background-color: #b84f03;
   }
