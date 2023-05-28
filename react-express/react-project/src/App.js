@@ -54,6 +54,7 @@ const getRestaurants = async () => {
       const jwt = getCookie('jwt');
       console.log('Cookie jwt: ', jwt);
       if(!jwt) {
+        console.log('LOGGEATE')
         window.location.href = 'http://localhost:8090/oauth2/authorization/github';
       }else{
         const response = await fetch('http://localhost:8090/restaurantes');
@@ -101,11 +102,12 @@ const getRestaurants = async () => {
       if(!jwt) {
         window.location.href = 'http://localhost:8090/oauth2/authorization/github';
       }else{
+        console.log("Añadiendo restaurantes")
           const response = await fetch('http://localhost:8090/restaurantes', {
               method: 'POST',
+              
               headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': 'Bearer ' + jwt
+                  'Content-Type': 'application/json'
               },
               // El body de la petición es el restaurante que se quiere añadir
               body: JSON.stringify({
