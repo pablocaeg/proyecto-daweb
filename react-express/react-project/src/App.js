@@ -37,21 +37,29 @@ const App = () => {
   const [loadingSitiosProximos, setLoadingSitiosProximos] = useState(false);
 
   const getSitiosProximos = async (idrestaurante) => {
-    try {
-      setLoadingSitiosProximos(true);
-      const response = await fetch(
-        `http://localhost:8090/restaurantes/${idrestaurante}/sitiosProximos`
-      );
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+    const jwt = getCookie("jwt");
+    console.log("Cookie jwt: ", jwt);
+    if (!jwt) {
+      console.log("LOGGEATE");
+      window.location.href =
+        "http://localhost:8090/oauth2/authorization/github";
+    } else {
+      try {
+        setLoadingSitiosProximos(true);
+        const response = await fetch(
+          `http://localhost:8090/restaurantes/${idrestaurante}/sitiosProximos`
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        console.log("Response: ", response);
+        const data = await response.json();
+        console.log(data);
+        setSitios(data);
+        setLoadingSitiosProximos(false);
+      } catch (error) {
+        console.error("Error fetching restaurants data:", error);
       }
-      console.log("Response: ", response);
-      const data = await response.json();
-      console.log(data);
-      setSitios(data);
-      setLoadingSitiosProximos(false);
-    } catch (error) {
-      console.error("Error fetching restaurants data:", error);
     }
   };
 
@@ -314,6 +322,7 @@ const App = () => {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
+              Authorization: "Bearer " + jwt,
             },
             // El body de la petición es el restaurante que se quiere añadir
             body: JSON.stringify({
@@ -355,6 +364,43 @@ const App = () => {
         console.log(data);
         setRestaurant(data);
         setLoadingRestaurant(false);
+        console.log(restaurant.idOpinion)
+        if (restaurant.idOpinion == null || restaurant.idOpinion == undefined) {
+          try {
+            const responseOpinion = await fetch(
+              `http://localhost:8090/restaurantes/${idrestaurante}/opinion`,
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: "Bearer " + jwt,
+                },
+              }
+            );
+            if (!responseOpinion.ok) {
+              throw new Error(`HTTP error! status: ${responseOpinion.status}`);
+            }
+            const data = await responseOpinion.json();
+            console.log(data);
+          } catch (error) {
+            console.error("Error creating opinion:", error);
+          }
+        } else {
+          try {
+            const response = await fetch(
+              `http://localhost:8090/restaurantes/${idrestaurante}/valoraciones`
+            );
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+    
+            const data = await response.json();
+            console.log(data);
+            setValoraciones(data);
+          } catch (error) {
+            console.error("Error fetching restaurants data:", error);
+          }
+        }
       }
     } catch (error) {
       console.error("Error fetching restaurants data:", error);
