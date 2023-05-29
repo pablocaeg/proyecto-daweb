@@ -1,47 +1,17 @@
 // ModifyPopup.js
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-const ModifyPopup = ({ restaurant, onClose, modifyRestaurant, addPlato }) => {
+const ModifyPopup = ({ sitios, restaurant, onClose, modifyRestaurant, addPlato }) => {
   const [name, setName] = useState(restaurant.resumen.nombre);
   const [coordinates, setCoordinates] = useState(restaurant.resumen.coordenadas);
-  const [postalcode, setPostalCode] = useState(restaurant.resumen.coordenadas);
-  const [city, setCity] = useState(restaurant.resumen.codigoPostal);
-  const [sitios, setSitios] = useState([]);
+  const [postalcode, setPostalCode] = useState(restaurant.resumen.codigoPostal);
+  const [city, setCity] = useState(restaurant.resumen.ciudad);
   const [selectedSitios, setSelectedSitios] = useState([]);
-
   const [nombre, setNombre] = useState('');
   const [descripcion, setDescripcion] = useState('');
   const [precio, setPrecio] = useState('');
   const [disponibilidad, setDisponibilidad] = useState(false);
 
-  useEffect(() => {
-    // PETICION GET PARA OBTENER LOS SITIOS TURISTICOS A PARTIR DE LA ID DE UN RESTAURANTE.
-    // SE HARDCODEA PARA VER COMO QUEDA LA INTERFAZ
-    setSitios([
-      {
-        titulo: "Estatua de la Libertad",
-        resumen:
-          "La Estatua de la Libertad es un símbolo de libertad en Nueva York, EE.UU.",
-        categorias: ["Historia", "Arquitectura"],
-        enlacesExternos: ["https://www.nps.gov/stli/index.htm"],
-        imagenes: ["estatua_libertad_1.jpg", "estatua_libertad_2.jpg"],
-      },
-      {
-        titulo: "Central Park",
-        resumen: "Central Park es un gran parque urbano en Nueva York, EE.UU.",
-        categorias: ["Naturaleza", "Recreación"],
-        enlacesExternos: ["https://www.centralparknyc.org/"],
-        imagenes: ["central_park_1.jpg", "central_park_2.jpg"],
-      },
-      {
-        titulo: "Museo Guggenheim",
-        resumen: "El Museo Guggenheim es un museo de arte moderno en Nueva York, EE.UU.",
-        categorias: ["Arte", "Cultura"],
-        enlacesExternos: ["https://www.guggenheim.org/"],
-        imagenes: ["guggenheim_1.jpg", "guggenheim_2.jpg"]
-      }
-    ]);
-  }, [restaurant]);
 
   const handleSitioChange = (sitio) => {
     if (selectedSitios.includes(sitio)) {
@@ -53,14 +23,16 @@ const ModifyPopup = ({ restaurant, onClose, modifyRestaurant, addPlato }) => {
 
   const handlePlatoSubmit = (e) => {
     e.preventDefault();
-    //addPlato()
+    addPlato(restaurant.resumen.id, nombre, descripcion, precio, disponibilidad)
     console.log({ nombre, descripcion, precio, disponibilidad });
+    onClose()
   };
 
   const handleUpdateRestauranteSubmit = (e) => {
     e.preventDefault();
-    //modifyRestaurant()
-    console.log({ name, coordinates, city, postalcode, selectedSitios });
+    console.log(selectedSitios)
+    modifyRestaurant(restaurant.resumen.id, name, coordinates, postalcode, selectedSitios, city)
+    onClose()
   };
 
   return (
@@ -112,8 +84,8 @@ const ModifyPopup = ({ restaurant, onClose, modifyRestaurant, addPlato }) => {
                   type="checkbox"
                   name="sitios"
                   value={sitio.titulo}
-                  checked={selectedSitios.includes(sitio.titulo)}
-                  onChange={() => handleSitioChange(sitio.titulo)}
+                  checked={selectedSitios.includes(sitio)}
+                  onChange={() => handleSitioChange(sitio)}
                 />
                 {sitio.titulo}
               </label>

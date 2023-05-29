@@ -10,6 +10,7 @@ import Restaurante from './pages/Restaurante/Restaurante.js';
 const App = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [valoraciones, setValoraciones] = useState([]);
+  const [sitios, setSitios] = useState([]);
   const [restaurant, setRestaurant] = useState([]);
 
   function getCookie(name) {
@@ -39,39 +40,19 @@ const App = () => {
   //! EL GET VALORACIONES SE HARÁ DENTRO DEL GETRESTAURANT. PRIMERO SE COMPRUEBA SI EXISTE OPINION PARA ESE RESTAURANTE, SI NO EXISTE SE CREA, SI EXISTE SE ASIGNA EL SETVALORACIONES.
 
   const getSitiosProximos = async (idrestaurante) => {
-    //? ADD GET SITIOS PROXIMOS GET REQUEST
-    // EN ESTA FUNCION SE MODIFICA LA FUNCION LOADINGSITIOSPROXIMOS.
-  };
-
-  const addValoracion = async (idopinion, nombre, coordenadas, ciudad) => {
     try {
-      const jwt = getCookie('jwt');
-      console.log('Cookie jwt: ', jwt);
-      if(!jwt) {
-        window.location.href = 'http://localhost:8090/oauth2/authorization/github';
-      }else{
-        console.log("Añadiendo restaurantes")
-          const response = await fetch(`http://localhost:8090/opiniones/${idopinion}/valoraciones`, {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json'
-              },
-              // El body de la petición es el restaurante que se quiere añadir
-              body: JSON.stringify({
-                "correoElectronico":nombre,
-                "fechaRegistro": new Date().toISOString(),
-                "comentario":coordenadas,
-                "calificacion":ciudad
-            })
-          });
-          if (!response.ok) {
-              throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          // Al modificar el restaurante, se vuelve a hacer la petición para obtener los restaurantes actualizados
-          await getRestaurants();
-      }
+        setLoadingSitiosProximos(true);
+        const response = await fetch(`http://localhost:8090/restaurantes/${idrestaurante}/sitiosProximos`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }       
+        console.log('Response: ', response);
+        const data = await response.json();
+        console.log(data)        
+        setSitios(data)
+        setLoadingSitiosProximos(false);
     } catch (error) {
-        console.error('Error adding valoracion:', error);
+      console.error('Error fetching restaurants data:', error);
     }
   };
 
@@ -123,7 +104,7 @@ const getRestaurants = async () => {
     }
   };
 
-  const addRestaurant = async (nombre, coordenadas, ciudad) => {
+  const addRestaurant = async (nombre, coordenadas, ciudad, postalcode) => {
     try {
       const jwt = getCookie('jwt');
       console.log('Cookie jwt: ', jwt);
@@ -131,22 +112,23 @@ const getRestaurants = async () => {
         window.location.href = 'http://localhost:8090/oauth2/authorization/github';
       }else{
         console.log("Añadiendo restaurantes");
-        const mijson = JSON.stringify({
+        const nuevorestaurante = JSON.stringify({
           "nombre":nombre,
-          "codigoPostal":"",
+          "codigoPostal":postalcode,
           "coordenadas":coordenadas,
           "idGestor":"",
           "ciudad":ciudad
         });
-        console.log(mijson);
+        console.log(nuevorestaurante);
           const response = await fetch('http://localhost:8090/restaurantes', {
               method: 'POST',
               
               headers: {
-                  'Content-Type': 'application/json'
+                  'Content-Type': 'application/json',
+                  'Authorization': 'Bearer ' + jwt
               },
               // El body de la petición es el restaurante que se quiere añadir
-              body: mijson
+              body: nuevorestaurante
           });
 
           if (!response.ok) {
@@ -160,53 +142,135 @@ const getRestaurants = async () => {
     }
 };
 
+const deleteRestaurant = async (idrestaurante) => {
+  try {
+    const jwt = getCookie('jwt');
+    console.log('Cookie jwt: ', jwt);
+    if(!jwt) {
+      window.location.href = 'http://localhost:8090/oauth2/authorization/github';
+    }else{
+        const response = await fetch(`http://localhost:8090/restaurantes/${idrestaurante}`, {
+            method: 'DELETE',
+            headers: { 'Authorization': 'Bearer ' + jwt }
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        await getRestaurants();
+      }
+  } catch (error) {
+      console.error('Error deleting restaurant:', error);
+  }
+};
+
+const modifyRestaurant = async (idrestaurante, nombre, coordenadas, postalcode, selectedSitios, ciudad) => {
+  try {
+    const jwt = getCookie('jwt');
+    console.log('Cookie jwt: ', jwt);
+    if(!jwt) {
+      window.location.href = 'http://localhost:8090/oauth2/authorization/github';
+    }else{
+      const restauranteActualizado = JSON.stringify({
+        "nombre":nombre,
+        "coordenadas":coordenadas,
+        "codigoPostal":postalcode,
+        "ciudad": ciudad,
+      });
+      console.log("Restaurante:" + restauranteActualizado);
+        const response = await fetch(`http://localhost:8090/restaurantes/${idrestaurante}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + jwt
+            },
+            body: restauranteActualizado
+        });
+        const responseSitios = await fetch(`http://localhost:8090/restaurantes/${idrestaurante}/sitiosDestacados`, {
+          method: 'PUT',
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + jwt
+          },
+          body: JSON.stringify(selectedSitios)
+      });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error on response! status: ${response.status}`);
+        }
+        if (!responseSitios.ok) {
+          throw new Error(`HTTP error on responseSitios! status: ${responseSitios.status}`);
+      }
+        await getRestaurants();
+      }
+  } catch (error) {
+      console.error('Error modifying restaurant:', error);
+  }
+};
+
+  
+const addPlato = async (idRestaurante, nombre, descripcion, precio) => {
+  try {
+    const jwt = getCookie('jwt');
+    console.log('Cookie jwt: ', jwt);
+    if(!jwt) {
+      window.location.href = 'http://localhost:8090/oauth2/authorization/github';
+    }else{
+        const response = await fetch(`http://localhost:8090/restaurantes/${idRestaurante}/platos`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + jwt
+            },
+            body: JSON.stringify({
+              "nombre":nombre,
+              "descripcion":descripcion,
+              "precio":precio
+          })
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        await getRestaurants();
+      }
+  } catch (error) {
+      console.error('Error modifying restaurant:', error);
+  }
+};
+
+
 /*************** HASTA AQUI *******************/
-const modifyRestaurant = async (restaurant) => {
-    try {
-      const jwt = getCookie('jwt');
-      console.log('Cookie jwt: ', jwt);
-      if(!jwt) {
-        window.location.href = 'http://localhost:8090/oauth2/authorization/github';
-      }else{
-          const response = await fetch(`http://localhost:8090/restaurantes/${restaurant.id}`, {
-              method: 'PUT',
-              headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': 'Bearer ' + jwt
-              },
-              body: JSON.stringify(restaurant)
-          });
-          if (!response.ok) {
-              throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          await getRestaurants();
-        }
-    } catch (error) {
-        console.error('Error modifying restaurant:', error);
-    }
-};
 
-const deleteRestaurant = async (restaurant) => {
-    try {
-      const jwt = getCookie('jwt');
-      console.log('Cookie jwt: ', jwt);
-      if(!jwt) {
-        window.location.href = 'http://localhost:8090/oauth2/authorization/github';
-      }else{
-          const response = await fetch(`http://localhost:8090/restaurantes/${restaurant.id}`, {
-              method: 'DELETE',
-              headers: { 'Authorization': 'Bearer ' + jwt }
-          });
-          if (!response.ok) {
-              throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          await getRestaurants();
+const addValoracion = async (idopinion, nombre, coordenadas, ciudad) => {
+  try {
+    const jwt = getCookie('jwt');
+    console.log('Cookie jwt: ', jwt);
+    if(!jwt) {
+      window.location.href = 'http://localhost:8090/oauth2/authorization/github';
+    }else{
+      console.log("Añadiendo restaurantes")
+        const response = await fetch(`http://localhost:8090/opiniones/${idopinion}/valoraciones`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            // El body de la petición es el restaurante que se quiere añadir
+            body: JSON.stringify({
+              "correoElectronico":nombre,
+              "fechaRegistro": new Date().toISOString(),
+              "comentario":coordenadas,
+              "calificacion":ciudad
+          })
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
-    } catch (error) {
-        console.error('Error deleting restaurant:', error);
+        // Al modificar el restaurante, se vuelve a hacer la petición para obtener los restaurantes actualizados
+        await getRestaurants();
     }
+  } catch (error) {
+      console.error('Error adding valoracion:', error);
+  }
 };
-
   
   const deletePlato = async (idRestaurante,nombrePlato) => {
     try {
@@ -262,36 +326,6 @@ const deleteRestaurant = async (restaurant) => {
     }
   };
 
-  
-  const addPlato = async (idRestaurante, nombre, descripcion, precio) => {
-    try {
-      const jwt = getCookie('jwt');
-      console.log('Cookie jwt: ', jwt);
-      if(!jwt) {
-        window.location.href = 'http://localhost:8090/oauth2/authorization/github';
-      }else{
-          const response = await fetch(`http://localhost:8090/restaurantes/${idRestaurante}`, {
-              method: 'PUT',
-              headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': 'Bearer ' + jwt
-              },
-              body: JSON.stringify({
-                "nombre":nombre,
-                "descripcion":descripcion,
-                "precio":precio
-            })
-          });
-          if (!response.ok) {
-              throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          await getRestaurants();
-        }
-    } catch (error) {
-        console.error('Error modifying restaurant:', error);
-    }
-  };
-
   useEffect(() => {
     getRestaurants();
   }, []);
@@ -302,7 +336,7 @@ const deleteRestaurant = async (restaurant) => {
       <main>
         <Routes>
           <Route path="/contact" element={<Contact />} />
-          <Route path="/" element={<Landing getSitiosProximos={getSitiosProximos} loadingSitiosProximos={loadingSitiosProximos} getRestaurant={getRestaurant} addPlato={addPlato} modifyRestaurant={modifyRestaurant} deleteRestaurant={deleteRestaurant} restaurants={restaurants} />} />
+          <Route path="/" element={<Landing sitios={sitios} getSitiosProximos={getSitiosProximos} loadingSitiosProximos={loadingSitiosProximos} getRestaurant={getRestaurant} addPlato={addPlato} modifyRestaurant={modifyRestaurant} deleteRestaurant={deleteRestaurant} restaurants={restaurants} />} />
           <Route 
             path="/restaurante/:id" 
             element={

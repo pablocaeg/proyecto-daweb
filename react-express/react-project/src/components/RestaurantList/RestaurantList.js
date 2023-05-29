@@ -6,10 +6,6 @@ const toRadians = (degrees) => {
   return (degrees * Math.PI) / 180;
 };
 
-const borrarRestaurante = (idrestaurante) => {
-  //deleteRestaurant()
-};
-
 const getDistance = (lat1, lon1, lat2, lon2) => {
   const R = 6371; // Earth's radius in km
   const dLat = toRadians(lat2 - lat1);
@@ -40,12 +36,18 @@ const RestaurantList = ({
   addPlato,
   getRestaurant,
   getSitiosProximos,
-  loadingSitiosProximos
+  loadingSitiosProximos,
+  sitios,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showPopup, setShowPopup] = useState(false);
   const [currentRestaurant, setCurrentRestaurant] = useState(null);
   const itemsPerPage = 5;
+
+  
+  const borrarRestaurante = (idrestaurante) => {
+    deleteRestaurant(idrestaurante)
+  };
 
   useEffect(() => {
     setCurrentPage(1);
@@ -171,6 +173,7 @@ const RestaurantList = ({
         loadingSitiosProximos
           ? <p>Loading...</p> 
           : <ModifyPopup
+          sitios={sitios}
           addPlato={addPlato}
           modifyRestaurant={modifyRestaurant}
           restaurant={currentRestaurant}
