@@ -192,6 +192,35 @@
         <p>Términos y condiciones | Política de privacidad</p>
       </div>
     </footer>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var form = document.querySelector('.contact-form');
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
+          
+          var name = form.elements['name'].value;
+          var email = form.elements['email'].value;
+          var subject = form.elements['subject'].value;
+          var message = form.elements['message'].value;
+    
+          if (name === "" || email === "" || subject === "" || message === "") {
+            alert("Por favor rellena todos los campos antes de continuar.");
+            return false;
+          }
+    
+          if (!validateEmail(email)) {
+            alert("Por favor introduzca un correo válido.");
+            return false;
+          }
+
+          alert("¡El formulario ha sido correctamente enviado! (Simulación)");
+        });
+    
+        function validateEmail(email) {
+          return email.includes('@');
+        }
+      });
+    </script>    
   </body>
 </html>
 </html>

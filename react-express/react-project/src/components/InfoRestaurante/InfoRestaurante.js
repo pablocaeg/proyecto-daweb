@@ -11,8 +11,6 @@ const InfoRestaurante = ({ addValoracion, valoraciones, restaurant }) => {
     addValoracion(restaurant.idOpinion, correo, comentario, calificacion);
   };
 
-  console.log(restaurant);
-
   const [lat, lon] = restaurant.coordenadas.split(",").map(Number);
 
   const [carouselIndex, setCarouselIndex] = useState(0);
