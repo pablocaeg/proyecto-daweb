@@ -10,8 +10,7 @@ const ModifyPlatoPopup = ({plato, onClose, modifyPlato, restaurant}) => {
   const handlePlatoSubmit = (e) => {
     e.preventDefault();
     modifyPlato(nombre, descripcion, precio, restaurant.id)
-    console.log({ nombre, descripcion, precio, disponibilidad });
-
+    onClose()
   };
 
   return (

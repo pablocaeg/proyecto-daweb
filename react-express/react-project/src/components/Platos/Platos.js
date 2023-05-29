@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ModifyPlatoPopup from "../ModifyPlatoPopup/ModifyPlatoPopup";
-import { useHref } from "react-router-dom";
 
 const Platos = ({ restaurant, modifyPlato, deletePlato}) => {
 
@@ -31,13 +30,14 @@ const Platos = ({ restaurant, modifyPlato, deletePlato}) => {
                 Modificar
               </button>
               <a 
+                id="incidencias-button"
                 href={`http://localhost:3000/incidencias?incidencia=${plato.nombre}&restaurante=${restaurant.nombre}`}
                 className="plato-incidencia-button">
                 Añadir Incidencia
               </a>
               <button 
                 className="plato-delete-button"
-                onClick={() => deletePlato(restaurant.id,plato.nombre)}>
+                onClick={() => deletePlato(restaurant.id, plato.nombre)}>
                 Borrar
               </button>
             </div>
