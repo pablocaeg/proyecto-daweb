@@ -6,11 +6,14 @@ import Footer from "./components/Footer/Footer.js";
 import Landing from "./pages/Landing/Landing.js";
 import Restaurante from "./pages/Restaurante/Restaurante.js";
 
+
 const App = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [valoraciones, setValoraciones] = useState([]);
   const [sitios, setSitios] = useState([]);
   const [restaurant, setRestaurant] = useState([]);
+
+  var cont = 0;
 
   function getCookie(name) {
     // Inicialmente, se toma la cadena de cookies completa de document.cookie y se le añade un ; al principio.
@@ -38,11 +41,6 @@ const App = () => {
   const getSitiosProximos = async (idrestaurante) => {
     const jwt = getCookie("jwt");
     console.log("Cookie jwt: ", jwt);
-    if (!jwt) {
-      console.log("LOGGEATE");
-      window.location.href =
-        "http://localhost:8090/oauth2/authorization/github";
-    } else {
       try {
         setLoadingSitiosProximos(true);
         const response = await fetch(
@@ -59,7 +57,7 @@ const App = () => {
       } catch (error) {
         console.error("Error fetching restaurants data:", error);
       }
-    }
+
   };
 
   // En nuestra lógica del backend para poder usar la plataforma tienes que estar loggeado, independientemente de se eres o no gestor
@@ -68,11 +66,6 @@ const App = () => {
     try {
       const jwt = getCookie("jwt");
       console.log("Cookie jwt: ", jwt);
-      if (!jwt) {
-        console.log("LOGGEATE");
-        window.location.href =
-          "http://localhost:8090/oauth2/authorization/github";
-      } else {
         const response = await fetch("http://localhost:8090/restaurantes");
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -81,7 +74,6 @@ const App = () => {
         const data = await response.json();
         console.log("Data received from server:", data.restaurante);
         setRestaurants(data.restaurante);
-      }
     } catch (error) {
       console.error("Error fetching restaurants data:", error);
     }
@@ -91,10 +83,6 @@ const App = () => {
     try {
       const jwt = getCookie("jwt");
       console.log("Cookie jwt: ", jwt);
-      if (!jwt) {
-        window.location.href =
-          "http://localhost:8090/oauth2/authorization/github";
-      } else {
         console.log("Añadiendo restaurantes");
         const nuevorestaurante = JSON.stringify({
           nombre: nombre,
@@ -120,7 +108,6 @@ const App = () => {
         }
         // Al modificar el restaurante, se vuelve a hacer la petición para obtener los restaurantes actualizados
         await getRestaurants();
-      }
     } catch (error) {
       console.error("Error adding restaurant:", error);
     }
@@ -130,10 +117,6 @@ const App = () => {
     try {
       const jwt = getCookie("jwt");
       console.log("Cookie jwt: ", jwt);
-      if (!jwt) {
-        window.location.href =
-          "http://localhost:8090/oauth2/authorization/github";
-      } else {
         const response = await fetch(
           `http://localhost:8090/restaurantes/${idrestaurante}`,
           {
@@ -145,7 +128,6 @@ const App = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         await getRestaurants();
-      }
     } catch (error) {
       console.error("Error deleting restaurant:", error);
     }
@@ -162,10 +144,6 @@ const App = () => {
     try {
       const jwt = getCookie("jwt");
       console.log("Cookie jwt: ", jwt);
-      if (!jwt) {
-        window.location.href =
-          "http://localhost:8090/oauth2/authorization/github";
-      } else {
         const restauranteActualizado = JSON.stringify({
           nombre: nombre,
           coordenadas: coordenadas,
@@ -205,7 +183,6 @@ const App = () => {
           );
         }
         await getRestaurants();
-      }
     } catch (error) {
       console.error("Error modifying restaurant:", error);
     }
@@ -215,10 +192,6 @@ const App = () => {
     try {
       const jwt = getCookie("jwt");
       console.log("Cookie jwt: ", jwt);
-      if (!jwt) {
-        window.location.href =
-          "http://localhost:8090/oauth2/authorization/github";
-      } else {
         const response = await fetch(
           `http://localhost:8090/restaurantes/${idRestaurante}/platos`,
           {
@@ -238,7 +211,6 @@ const App = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         await getRestaurants();
-      }
     } catch (error) {
       console.error("Error adding plato:", error);
     }
@@ -248,10 +220,6 @@ const App = () => {
     try {
       const jwt = getCookie("jwt");
       console.log("Cookie jwt: ", jwt);
-      if (!jwt) {
-        window.location.href =
-          "http://localhost:8090/oauth2/authorization/github";
-      } else {
         const response = await fetch(
           `http://localhost:8090/restaurantes/${idRestaurante}/platos/${nombrePlato}`,
           {
@@ -265,7 +233,6 @@ const App = () => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-      }
     } catch (error) {
       console.error("Error deleting plato:", error);
     }
@@ -275,10 +242,6 @@ const App = () => {
     try {
       const jwt = getCookie("jwt");
       console.log("Cookie jwt: ", jwt);
-      if (!jwt) {
-        window.location.href =
-          "http://localhost:8090/oauth2/authorization/github";
-      } else {
         const response = await fetch(
           `http://localhost:8090/restaurantes/${idRestaurante}/platos`,
           {
@@ -298,7 +261,6 @@ const App = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         await getRestaurant(idRestaurante);
-      }
     } catch (error) {
       console.error("Error modifying plato:", error);
     }
@@ -310,10 +272,6 @@ const App = () => {
     try {
       const jwt = getCookie("jwt");
       console.log("Cookie jwt: ", jwt);
-      if (!jwt) {
-        window.location.href =
-          "http://localhost:8090/oauth2/authorization/github";
-      } else {
         console.log("Añadiendo restaurantes");
         const response = await fetch(
           `http://localhost:8090/opiniones/${idopinion}/valoraciones`,
@@ -337,7 +295,6 @@ const App = () => {
         }
         // Al modificar el restaurante, se vuelve a hacer la petición para obtener los restaurantes actualizados
         await getRestaurants();
-      }
     } catch (error) {
       console.error("Error adding valoracion:", error);
     }
@@ -347,10 +304,6 @@ const App = () => {
     try {
       const jwt = getCookie("jwt");
       console.log("Cookie jwt: ", jwt);
-      if (!jwt) {
-        window.location.href =
-          "http://localhost:8090/oauth2/authorization/github";
-      } else {
         setLoadingRestaurant(true);
         const response = await fetch(
           `http://localhost:8090/restaurantes/${idrestaurante}`
@@ -400,7 +353,6 @@ const App = () => {
             console.error("Error fetching restaurants data:", error);
           }
         }
-      }
     } catch (error) {
       console.error("Error fetching restaurants data:", error);
     }
@@ -408,7 +360,16 @@ const App = () => {
     //! EL GET VALORACIONES SE HARÁ DENTRO DEL GETRESTAURANT. PRIMERO SE COMPRUEBA SI EXISTE OPINION PARA ESE RESTAURANTE, SI NO EXISTE SE CREA, SI EXISTE SE ASIGNA EL SETVALORACIONES.
   };
 
+  const establishCookie = async () => {
+    if (!getCookie("jwt") && cont === 0) {
+      cont++;
+      window.location.href =
+        "http://localhost:8090/oauth2/authorization/github";
+    }
+  }
+
   useEffect(() => {
+    establishCookie();
     getRestaurants();
   }, []);
 
