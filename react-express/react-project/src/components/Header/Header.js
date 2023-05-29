@@ -20,9 +20,6 @@ const Header = ({ addRestaurant }) => {
       <nav className="navbar">        
         <ul className="navbar-nav">
           <li className="navbar-button">
-            <a className="nav-link" onClick={() => alert('Acceso con JWT Github')}>Acceder</a>
-          </li>
-          <li className="navbar-button">
             <a className="nav-link" onClick={handleAddRestaurant}>Nuevo Restaurante</a>
           </li>
           <li className="navbar-button">
