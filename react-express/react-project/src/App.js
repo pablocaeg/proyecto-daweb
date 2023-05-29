@@ -130,7 +130,15 @@ const getRestaurants = async () => {
       if(!jwt) {
         window.location.href = 'http://localhost:8090/oauth2/authorization/github';
       }else{
-        console.log("Añadiendo restaurantes")
+        console.log("Añadiendo restaurantes");
+        const mijson = JSON.stringify({
+          "nombre":nombre,
+          "codigoPostal":"",
+          "coordenadas":coordenadas,
+          "idGestor":"",
+          "ciudad":ciudad
+        });
+        console.log(mijson);
           const response = await fetch('http://localhost:8090/restaurantes', {
               method: 'POST',
               
@@ -138,12 +146,9 @@ const getRestaurants = async () => {
                   'Content-Type': 'application/json'
               },
               // El body de la petición es el restaurante que se quiere añadir
-              body: JSON.stringify({
-                "nombre":nombre,
-                "coordenadas":coordenadas,
-                "ciudad":ciudad
-            })
+              body: mijson
           });
+
           if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
           }
@@ -154,6 +159,7 @@ const getRestaurants = async () => {
         console.error('Error adding restaurant:', error);
     }
 };
+
 /*************** HASTA AQUI *******************/
 const modifyRestaurant = async (restaurant) => {
     try {
