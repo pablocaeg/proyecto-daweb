@@ -12,8 +12,7 @@ const App = () => {
   const [valoraciones, setValoraciones] = useState([]);
   const [sitios, setSitios] = useState([]);
   const [restaurant, setRestaurant] = useState([]);
-
-  var cont = 0;
+  const [jwtcont, setJwtcont] = useState(0);
 
   function getCookie(name) {
     // Inicialmente, se toma la cadena de cookies completa de document.cookie y se le añade un ; al principio.
@@ -361,8 +360,8 @@ const App = () => {
   };
 
   const establishCookie = async () => {
-    if (!getCookie("jwt") && cont === 0) {
-      cont++;
+    if (!getCookie("jwt") && jwtcont === 0) {
+      setJwtcont(1)
       window.location.href =
         "http://localhost:8090/oauth2/authorization/github";
     }
