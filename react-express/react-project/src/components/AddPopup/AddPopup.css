@@ -16,8 +16,8 @@
 
   
 .add-popup-inner {
-    overflow: scroll;
-    height: 38%;
+    overflow: auto;
+    height: 47%;
     width: 80%;
     max-width: 500px;
     background: white;

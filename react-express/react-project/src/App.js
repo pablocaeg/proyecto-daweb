@@ -43,7 +43,7 @@ const App = () => {
     // EN ESTA FUNCION SE MODIFICA LA FUNCION LOADINGSITIOSPROXIMOS.
   };
 
-  const addValoracion = async (idopinion) => {
+  const addValoracion = async (idopinion, nombre, coordenadas, ciudad) => {
     try {
       const jwt = getCookie('jwt');
       console.log('Cookie jwt: ', jwt);

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 const ModifyPopup = ({ restaurant, onClose, modifyRestaurant, addPlato }) => {
   const [name, setName] = useState(restaurant.resumen.nombre);
   const [coordinates, setCoordinates] = useState(restaurant.resumen.coordenadas);
+  const [postalcode, setPostalCode] = useState(restaurant.resumen.coordenadas);
   const [city, setCity] = useState(restaurant.resumen.codigoPostal);
   const [sitios, setSitios] = useState([]);
   const [selectedSitios, setSelectedSitios] = useState([]);
@@ -59,7 +60,7 @@ const ModifyPopup = ({ restaurant, onClose, modifyRestaurant, addPlato }) => {
   const handleUpdateRestauranteSubmit = (e) => {
     e.preventDefault();
     //modifyRestaurant()
-    console.log({ name, coordinates, city, selectedSitios });
+    console.log({ name, coordinates, city, postalcode, selectedSitios });
   };
 
   return (
@@ -93,6 +94,14 @@ const ModifyPopup = ({ restaurant, onClose, modifyRestaurant, addPlato }) => {
               type="text"
               value={city}
               onChange={(e) => setCity(e.target.value)}
+            />
+          </label>
+          <label>
+            Código Postal:
+            <input
+              type="text"
+              value={postalcode}
+              onChange={(e) => setPostalCode(e.target.value)}
             />
           </label>
           <fieldset>

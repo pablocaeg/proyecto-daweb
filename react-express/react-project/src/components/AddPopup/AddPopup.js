@@ -4,13 +4,15 @@ const AddPopup = ({ onClose, addRestaurant }) => {
   const [nombre, setName] = useState("");
   const [coordenadas, setCoordinates] = useState("");
   const [ciudad, setCity] = useState("");
+  const [postalcode, setPostalCode] = useState("");
 
   const handleAddRestauranteSubmit = (e) => {
     e.preventDefault();
-    addRestaurant(nombre, coordenadas, ciudad );
+    addRestaurant(nombre, coordenadas, ciudad, postalcode);
     setName("");
     setCoordinates("");
     setCity("");
+    setPostalCode("")
     onClose();
   };
 
@@ -45,6 +47,14 @@ const AddPopup = ({ onClose, addRestaurant }) => {
               type="text"
               value={ciudad}
               onChange={(e) => setCity(e.target.value)}
+            />
+          </label>
+          <label>
+            Código Postal:
+            <input
+              type="text"
+              value={postalcode}
+              onChange={(e) => setPostalCode(e.target.value)}
             />
           </label>
           <button type="submit">Añadir restaurante</button>
