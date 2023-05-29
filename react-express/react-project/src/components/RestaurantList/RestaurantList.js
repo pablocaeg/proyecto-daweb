@@ -32,6 +32,7 @@ const RestaurantList = ({
   searchQuery,
   latitude,
   longitude,
+  city,
   distance,
   setSearchBarCount,
   modifyRestaurant,
@@ -48,23 +49,26 @@ const RestaurantList = ({
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [ratingFilter, searchQuery, latitude, longitude, distance]);
+  }, [ratingFilter, searchQuery, latitude, longitude, distance, city]);
 
   const filteredRestaurants = restaurants
-    .filter((restaurant) =>
-      restaurant.resumen.nombre
-        .toLowerCase()
-        .includes(searchQuery.toLowerCase())
-    )
-    .filter((restaurant) => {
-      if (latitude && longitude && distance) {
-        const [lat, lon] = restaurant.resumen.coordenadas
-          .split(",")
-          .map(Number);
-        return getDistance(lat, lon, latitude, longitude) <= distance;
-      }
-      return true;
-    });
+      .filter((restaurant) =>
+        restaurant.resumen.nombre
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase())
+      )
+      .filter((restaurant) => {
+        if (latitude && longitude && distance) {
+          const [lat, lon] = restaurant.resumen.coordenadas
+            .split(",")
+            .map(Number);
+          return getDistance(lat, lon, latitude, longitude) <= distance;
+        }
+        return true;
+      })
+      .filter((restaurant) => restaurant.resumen.calificacionMedia >= ratingFilter)
+      .filter((restaurant) => 
+        city.trim() === "" ? true : restaurant.resumen.ciudad === null || (restaurant.resumen.ciudad.toLowerCase() === city.toLowerCase()));
 
   useEffect(() => {
     setSearchBarCount(filteredRestaurants.length);
@@ -107,6 +111,12 @@ const RestaurantList = ({
             </p>
             <p className="restaurant-info">
               Código postal: {restaurant.resumen.codigoPostal}
+            </p>
+            <p className="restaurant-info">
+              Ciudad: {restaurant.resumen.ciudad}
+            </p>
+            <p className="restaurant-info">
+              Calificacion Media: {restaurant.resumen.calificacionMedia}
             </p>
             <div className="restaurant-button-container">
               <button

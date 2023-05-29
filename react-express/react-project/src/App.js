@@ -44,7 +44,35 @@ const App = () => {
   };
 
   const addValoracion = async (idopinion) => {
-    //? ADD VALORACION POST REQUEST
+    try {
+      const jwt = getCookie('jwt');
+      console.log('Cookie jwt: ', jwt);
+      if(!jwt) {
+        window.location.href = 'http://localhost:8090/oauth2/authorization/github';
+      }else{
+        console.log("Añadiendo restaurantes")
+          const response = await fetch(`http://localhost:8090/opiniones/${idopinion}/valoraciones`, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              // El body de la petición es el restaurante que se quiere añadir
+              body: JSON.stringify({
+                "correoElectronico":nombre,
+                "fechaRegistro": new Date().toISOString(),
+                "comentario":coordenadas,
+                "calificacion":ciudad
+            })
+          });
+          if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          // Al modificar el restaurante, se vuelve a hacer la petición para obtener los restaurantes actualizados
+          await getRestaurants();
+      }
+    } catch (error) {
+        console.error('Error adding valoracion:', error);
+    }
   };
 
 // En nuestra lógica del backend para poder usar la plataforma tienes que estar loggeado, independientemente de se eres o no gestor

@@ -8,6 +8,7 @@ const SearchBar = ({
   onLatitudeChange,
   onLongitudeChange,
   onDistanceChange,
+  onCityChange,
   count,
   searchQuery
 }) => {
@@ -27,6 +28,7 @@ const SearchBar = ({
           : `${count} restaurantes están siendo mostrados`}
       </div>
       <Filters
+        onCityChange={onCityChange}
         onRatingFilterChange={onRatingFilterChange}
         onLatitudeChange={onLatitudeChange}
         onLongitudeChange={onLongitudeChange}

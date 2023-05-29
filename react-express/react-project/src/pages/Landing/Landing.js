@@ -9,6 +9,7 @@ const Landing = ({ getSitiosProximos, loadingSitiosProximos, getRestaurant, rest
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
   const [distance, setDistance] = useState("");
+  const [city, setCity] = useState("");
   const [searchBarCount, setSearchBarCount] = useState(0);
 
   const handleRatingFilterChange = (e) => {
@@ -30,6 +31,11 @@ const Landing = ({ getSitiosProximos, loadingSitiosProximos, getRestaurant, rest
   const handleDistanceChange = (e) => {
     setDistance(e.target.value);
   };
+
+  const handleCityChange = (e) => {
+    setCity(e.target.value);
+  };
+
   return (
     <>
       <SearchBar
@@ -38,6 +44,7 @@ const Landing = ({ getSitiosProximos, loadingSitiosProximos, getRestaurant, rest
         onLatitudeChange={handleLatitudeChange}
         onLongitudeChange={handleLongitudeChange}
         onDistanceChange={handleDistanceChange}
+        onCityChange={handleCityChange}
         count={searchBarCount}
         searchQuery={searchQuery}
       />
@@ -51,6 +58,7 @@ const Landing = ({ getSitiosProximos, loadingSitiosProximos, getRestaurant, rest
         searchQuery={searchQuery}
         latitude={latitude}
         longitude={longitude}
+        city={city}
         distance={distance}
         setSearchBarCount={setSearchBarCount}
         addPlato = {addPlato}

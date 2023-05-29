@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 const Filters = ({
+  onCityChange,
   onRatingFilterChange,
   onLatitudeChange,
   onLongitudeChange,
@@ -19,16 +20,13 @@ const Filters = ({
           className="toggle-button"
           onClick={() => setRatingFilterVisible(!ratingFilterVisible)}
         >
-          {ratingFilterVisible ? "Esconder filtro por valoración" : "Mostrar filtro por valoración"}
+          {ratingFilterVisible ? "Esconder filtros por valoración y ciudad" : "Mostrar filtros por valoración y ciudad"}
         </button>
         {ratingFilterVisible && (
           <div className="city-rating-container">
-            <select className="filter-city">
-              <option value="">Select City</option>
-              <option value="murcia">Murcia</option>
-              <option value="madrid">Madrid</option>
-              <option value="madrid">Torreagüera</option>
-            </select>
+            <label className="filter-label">Ciudad</label>
+            <input className="filter-rating" onChange={onCityChange}>
+            </input>
             <label className="filter-label">Valoración</label>
             <input
               className="filter-rating"
