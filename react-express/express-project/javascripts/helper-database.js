@@ -16,9 +16,9 @@ async function getConnection() {
   return connection;
 }
 
-async function registerIncidencia(connection, incidencia, mail, message) {
+async function registerIncidencia(connection, incidencia, mail, message, restaurante) {
   try {
-    const result = await connection.execute('INSERT INTO `Incidencias` SET `incidencia` = ?, `mail` = ?, `mensaje` = ?', [incidencia, mail, message]);
+    const result = await connection.execute('INSERT INTO `Incidencias` SET `incidencia` = ?, `mail` = ?, `mensaje` = ?, `restaurante` = ?', [incidencia, mail, message, restaurante]);
     return result;
   } catch (error) {
     console.error('Error registrando incidencia:', error);
