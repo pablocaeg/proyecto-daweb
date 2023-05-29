@@ -57,4 +57,26 @@ router.get('/', function(req, res, next) {
 module.exports = router;
 
 
+/* GET incidencias de un restaurante */
+router.get('/restaurant/:restaurantName', async function(req, res, next) {
+  let con;
+  try {
+    console.log('Establecemos conexion');
+    con = await helper_mysql.getConnection();
+    console.log('Recuperamos incidencias');
+    const data = await helper_mysql.getIncidenciasByRestaurant(con, req.params.restaurantName);
+    console.log("Incidencias recuperadas: " + data)
+    res.render('incidencias', { 'title' : 'Lista de incidencias', 'incidencias' : data });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Error al obtener las incidencias');
+  } finally {
+    if (con) {
+      con.end();
+    }
+  }
+});
+
+
 
