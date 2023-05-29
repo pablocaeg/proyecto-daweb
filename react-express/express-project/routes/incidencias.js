@@ -6,9 +6,10 @@ var helper_mysql = require('../javascripts/helper-database');
 router.post('/register', async function(req, res, next) {
   let con;
   try {
-    const { incidencia, mail, message } = req.body;
+   
+    const { incidencia, mail, message, restaurante } = req.body;
     con = await helper_mysql.getConnection();
-    const result = await helper_mysql.registerIncidencia(con, incidencia, mail, message);
+    const result = await helper_mysql.registerIncidencia(con, incidencia, mail, message, restaurante);
     
     if (result[0].affectedRows > 0) {
       res.render('incidencia_registrada', { 'title' : 'Respuesta registro incidencia', 'message' : 'Incidencia registrada' });
@@ -48,7 +49,10 @@ router.get('/all', async function(req, res, next) {
 });
 /* GET formulario-incidencias */
 router.get('/', function(req, res, next) {
-  res.render('formulario_incidencias', { title: 'formulario incidencias'});
+  console.log(req.query);
+  const { incidencia, restaurante } = req.query;
+  console.log("Incidencia:", incidencia, "Restaurante:", restaurante); // imprime: Paella LaBodeguita http://localhost:3000/incidencias?incidencia=Paella&restaurante=LaBodeguita
+  res.render('formulario_incidencias', { title: 'formulario incidencias', incidencia: incidencia, restaurante:restaurante });
 });
 module.exports = router;
 
