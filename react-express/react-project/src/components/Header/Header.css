@@ -59,3 +59,27 @@ li {
   font-size: 1.1rem;
   color: #666;
 }
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+  }
+
+  #app-logo {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .navbar {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+  }
+
+  .nav-link {
+    margin: 5px 0;
+  }
+}

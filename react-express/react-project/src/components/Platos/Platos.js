@@ -43,8 +43,18 @@ const Platos = ({ restaurant, modifyPlato, deletePlato }) => {
               Borrar
             </button>
           </div>
+          
         </div>
+      
       ))}
+            <a
+              id="incidencias-button"
+              
+              href={`http://localhost:3000/incidencias/restaurant/${restaurant.nombre}`}
+              className="plato-incidencia-button"
+            >
+              Ver incidencias
+            </a>
       {showModifyPopup && selectedPlato && (
         <ModifyPlatoPopup
           plato={selectedPlato}
@@ -55,6 +65,7 @@ const Platos = ({ restaurant, modifyPlato, deletePlato }) => {
       )}
     </div>
   );
+  
 };
 
 export default Platos;
