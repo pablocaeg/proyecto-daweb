@@ -53,6 +53,7 @@ const RestaurantList = ({
   }, [ratingFilter, searchQuery, latitude, longitude, distance, city]);
 
   const filteredRestaurants = restaurants
+
     .filter((restaurant) =>
       restaurant.resumen.nombre
         .toLowerCase()

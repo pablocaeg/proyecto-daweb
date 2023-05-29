@@ -27,6 +27,11 @@ const Header = ({ addRestaurant }) => {
             </a>
           </li>
           <li className="navbar-button">
+            <a className="nav-link" href="http://localhost:3000/incidencias/all">
+              Incidencias
+            </a>
+          </li>
+          <li className="navbar-button">
             <a className="nav-link" href="contacto.html">
               Contacto
             </a>
