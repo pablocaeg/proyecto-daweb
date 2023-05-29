@@ -8,11 +8,11 @@ const InfoRestaurante = ({ addValoracion, valoraciones, restaurant }) => {
 
   const handleAddValoracionSubmit = (e) => {
     e.preventDefault();
-    addValoracion(restaurant.idOpinion, correo, comentario, calificacion)
+    addValoracion(restaurant.idOpinion, correo, comentario, calificacion);
   };
 
   console.log(restaurant);
-  
+
   const [lat, lon] = restaurant.coordenadas.split(",").map(Number);
 
   const [carouselIndex, setCarouselIndex] = useState(0);
@@ -30,7 +30,7 @@ const InfoRestaurante = ({ addValoracion, valoraciones, restaurant }) => {
         restaurant.sitios[0].imagenes.length
     );
   };
-  
+
   const renderRatingStars = (rating) => {
     const maxRating = 5;
     const stars = [];

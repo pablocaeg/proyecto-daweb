@@ -1,64 +1,61 @@
 header {
-    display: flex;
-    padding: 10px;
-    background-color: #fff;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    align-items: center; /* add this line to vertically center the items */
-  }
-  
-  #app-logo {
-    max-width: 90px;
-    margin-bottom: 0px;
-    margin-left: 5rem;
-  }
-  
-  #app-title {
-    margin-top: 0px;
-    margin-left: 10px;
-    margin-bottom: 2.5px;
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #fd6c01;
-    text-decoration: none;
-  }
+  display: flex;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  align-items: center;
+}
 
-  .navbar {
-    width: 80%;
-    display: flex;
-    justify-content: flex-end;
-    margin: 20px;
-  }
+#app-logo {
+  max-width: 90px;
+  margin-bottom: 0px;
+  margin-left: 5rem;
+}
 
-  .navbar-nav {
-    display: flex;
-  }
-  
-  .nav-link {
-    font-size: 1rem;
-    text-decoration: none;
-    color: #000;
-    font-weight: bold;
-    position: relative;
-    background-color: transparent;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 8px;
-  }
+#app-title {
+  margin-top: 0px;
+  margin-left: 10px;
+  margin-bottom: 2.5px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fd6c01;
+  text-decoration: none;
+}
 
-  .nav-link:hover {
-    cursor: pointer;
-    text-decoration: underline;
-  }
+.navbar {
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+}
 
+.navbar-nav {
+  display: flex;
+}
 
-  li{
-    list-style: none;
-  }
-  
-  #app-slogan {
-    margin: 0;
-    font-size: 1.1rem;
-    color: #666;
-  }
-  
-  
+.nav-link {
+  font-size: 1rem;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  position: relative;
+  background-color: transparent;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 8px;
+}
+
+.nav-link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+li {
+  list-style: none;
+}
+
+#app-slogan {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #666;
+}

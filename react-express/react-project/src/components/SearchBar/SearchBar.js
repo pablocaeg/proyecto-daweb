@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import Filters from '../Filters/Filters.js';
+import Filters from "../Filters/Filters.js";
 
 const SearchBar = ({
   onRatingFilterChange,
@@ -10,7 +10,7 @@ const SearchBar = ({
   onDistanceChange,
   onCityChange,
   count,
-  searchQuery
+  searchQuery,
 }) => {
   return (
     <>
@@ -34,7 +34,6 @@ const SearchBar = ({
         onLongitudeChange={onLongitudeChange}
         onDistanceChange={onDistanceChange}
       />
-
     </>
   );
 };

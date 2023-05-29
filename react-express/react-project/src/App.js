@@ -364,7 +364,7 @@ const App = () => {
         console.log(data);
         setRestaurant(data);
         setLoadingRestaurant(false);
-        console.log(restaurant.idOpinion)
+        console.log(restaurant.idOpinion);
         if (restaurant.idOpinion == null || restaurant.idOpinion == undefined) {
           try {
             const responseOpinion = await fetch(
@@ -393,7 +393,7 @@ const App = () => {
             if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
             }
-    
+
             const data = await response.json();
             console.log(data);
             setValoraciones(data);

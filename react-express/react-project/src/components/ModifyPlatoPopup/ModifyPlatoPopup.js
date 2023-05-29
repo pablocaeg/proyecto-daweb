@@ -1,7 +1,7 @@
 // ModifyPlatoPopup.js
 import React, { useState } from "react";
 
-const ModifyPlatoPopup = ({plato, onClose, modifyPlato, restaurant}) => {
+const ModifyPlatoPopup = ({ plato, onClose, modifyPlato, restaurant }) => {
   const [nombre, setNombre] = useState(plato.nombre);
   const [descripcion, setDescripcion] = useState(plato.descripcion);
   const [precio, setPrecio] = useState(plato.precio);
@@ -9,8 +9,8 @@ const ModifyPlatoPopup = ({plato, onClose, modifyPlato, restaurant}) => {
 
   const handlePlatoSubmit = (e) => {
     e.preventDefault();
-    modifyPlato(nombre, descripcion, precio, restaurant.id)
-    onClose()
+    modifyPlato(nombre, descripcion, precio, restaurant.id);
+    onClose();
   };
 
   return (
@@ -27,7 +27,7 @@ const ModifyPlatoPopup = ({plato, onClose, modifyPlato, restaurant}) => {
             <input
               type="text"
               value={nombre}
-              onChange={e => setNombre(e.target.value)}
+              onChange={(e) => setNombre(e.target.value)}
             />
           </label>
           <label>
@@ -35,7 +35,7 @@ const ModifyPlatoPopup = ({plato, onClose, modifyPlato, restaurant}) => {
             <input
               type="text"
               value={descripcion}
-              onChange={e => setDescripcion(e.target.value)}
+              onChange={(e) => setDescripcion(e.target.value)}
             />
           </label>
           <label>
@@ -43,7 +43,7 @@ const ModifyPlatoPopup = ({plato, onClose, modifyPlato, restaurant}) => {
             <input
               type="text"
               value={precio}
-              onChange={e => setPrecio(e.target.value)}
+              onChange={(e) => setPrecio(e.target.value)}
             />
           </label>
           <label>
@@ -51,7 +51,7 @@ const ModifyPlatoPopup = ({plato, onClose, modifyPlato, restaurant}) => {
             <input
               type="checkbox"
               checked={disponibilidad}
-              onChange={e => setDisponibilidad(e.target.checked)}
+              onChange={(e) => setDisponibilidad(e.target.checked)}
             />
           </label>
           <button type="submit">Modificar Plato</button>

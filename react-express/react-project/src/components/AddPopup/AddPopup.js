@@ -12,7 +12,7 @@ const AddPopup = ({ onClose, addRestaurant }) => {
     setName("");
     setCoordinates("");
     setCity("");
-    setPostalCode("")
+    setPostalCode("");
     onClose();
   };
 

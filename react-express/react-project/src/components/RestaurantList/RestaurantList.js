@@ -44,9 +44,8 @@ const RestaurantList = ({
   const [currentRestaurant, setCurrentRestaurant] = useState(null);
   const itemsPerPage = 5;
 
-  
   const borrarRestaurante = (idrestaurante) => {
-    deleteRestaurant(idrestaurante)
+    deleteRestaurant(idrestaurante);
   };
 
   useEffect(() => {
@@ -54,23 +53,29 @@ const RestaurantList = ({
   }, [ratingFilter, searchQuery, latitude, longitude, distance, city]);
 
   const filteredRestaurants = restaurants
-      .filter((restaurant) =>
-        restaurant.resumen.nombre
-          .toLowerCase()
-          .includes(searchQuery.toLowerCase())
-      )
-      .filter((restaurant) => {
-        if (latitude && longitude && distance) {
-          const [lat, lon] = restaurant.resumen.coordenadas
-            .split(",")
-            .map(Number);
-          return getDistance(lat, lon, latitude, longitude) <= distance;
-        }
-        return true;
-      })
-      .filter((restaurant) => restaurant.resumen.calificacionMedia >= ratingFilter)
-      .filter((restaurant) => 
-        city.trim() === "" ? true : restaurant.resumen.ciudad === null || (restaurant.resumen.ciudad.toLowerCase() === city.toLowerCase()));
+    .filter((restaurant) =>
+      restaurant.resumen.nombre
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase())
+    )
+    .filter((restaurant) => {
+      if (latitude && longitude && distance) {
+        const [lat, lon] = restaurant.resumen.coordenadas
+          .split(",")
+          .map(Number);
+        return getDistance(lat, lon, latitude, longitude) <= distance;
+      }
+      return true;
+    })
+    .filter(
+      (restaurant) => restaurant.resumen.calificacionMedia >= ratingFilter
+    )
+    .filter((restaurant) =>
+      city.trim() === ""
+        ? true
+        : restaurant.resumen.ciudad === null ||
+          restaurant.resumen.ciudad.toLowerCase() === city.toLowerCase()
+    );
 
   useEffect(() => {
     setSearchBarCount(filteredRestaurants.length);
@@ -124,10 +129,10 @@ const RestaurantList = ({
               <button
                 className="modify-button"
                 onClick={(event) => {
-                  getSitiosProximos(restaurant.resumen.id)
+                  getSitiosProximos(restaurant.resumen.id);
                   event.preventDefault();
                   event.stopPropagation();
-                  openModifyPopup(restaurant)
+                  openModifyPopup(restaurant);
                 }}
               >
                 Modificar
@@ -169,17 +174,19 @@ const RestaurantList = ({
           <h3>{totalPages}</h3>
         </div>
       </div>
-      {showPopup && currentRestaurant && (
-        loadingSitiosProximos
-          ? <p>Loading...</p> 
-          : <ModifyPopup
-          sitios={sitios}
-          addPlato={addPlato}
-          modifyRestaurant={modifyRestaurant}
-          restaurant={currentRestaurant}
-          onClose={closeModifyPopup}
-        />
-      )}
+      {showPopup &&
+        currentRestaurant &&
+        (loadingSitiosProximos ? (
+          <p>Loading...</p>
+        ) : (
+          <ModifyPopup
+            sitios={sitios}
+            addPlato={addPlato}
+            modifyRestaurant={modifyRestaurant}
+            restaurant={currentRestaurant}
+            onClose={closeModifyPopup}
+          />
+        ))}
     </div>
   );
 };

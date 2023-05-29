@@ -20,13 +20,14 @@ const Filters = ({
           className="toggle-button"
           onClick={() => setRatingFilterVisible(!ratingFilterVisible)}
         >
-          {ratingFilterVisible ? "Esconder filtros por valoración y ciudad" : "Mostrar filtros por valoración y ciudad"}
+          {ratingFilterVisible
+            ? "Esconder filtros por valoración y ciudad"
+            : "Mostrar filtros por valoración y ciudad"}
         </button>
         {ratingFilterVisible && (
           <div className="city-rating-container">
             <label className="filter-label">Ciudad</label>
-            <input className="filter-rating" onChange={onCityChange}>
-            </input>
+            <input className="filter-rating" onChange={onCityChange}></input>
             <label className="filter-label">Valoración</label>
             <input
               className="filter-rating"
