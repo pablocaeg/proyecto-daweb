@@ -11,7 +11,6 @@ import "./components/ModifyPlatoPopup/ModifyPlatoPopup.css";
 import "./components/Header/Header.css";
 import "./components/Filters/Filters.css";
 import "./components/SearchBar/SearchBar.css";
-import "./pages/Contact/Contact.css";
 import "./pages/Restaurante/Restaurante.css";
 import "./components/ModifyPopup/ModifyPopup.css";
 import "./components/AddPopup/AddPopup.css";

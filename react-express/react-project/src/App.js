@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Await, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import Header from "./components/Header/Header.js";
 import Footer from "./components/Footer/Footer.js";
-import Contact from "./pages/Contact/Contact.js";
 import Landing from "./pages/Landing/Landing.js";
 import Restaurante from "./pages/Restaurante/Restaurante.js";
 
@@ -418,7 +417,6 @@ const App = () => {
       <Header addRestaurant={addRestaurant} />
       <main>
         <Routes>
-          <Route path="/contact" element={<Contact />} />
           <Route
             path="/"
             element={
