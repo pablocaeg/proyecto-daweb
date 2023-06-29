@@ -69,7 +69,7 @@ const App = () => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        console.log("Response: ", response.data);
+        console.log("Response: ", response);
         const data = await response.json();
         console.log("Data received from server:", data.restaurante);
         setRestaurants(data.restaurante);
